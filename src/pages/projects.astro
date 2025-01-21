@@ -1,0 +1,113 @@
+---
+// astro tools
+import { getCollection } from "astro:content"
+
+// layouts
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import Container from "@/layouts/Container.astro"
+
+//components
+import ContactForm from "@/components/ContactForm.astro"
+import Hero from "@/components/projects/Hero.astro"
+import ProjectCard from "@/components/ui/ProjectCard.astro"
+import Badge from "@/components/ui/Badge.astro"
+
+// lib
+import getSearchParamAsArray from "@/lib/getSearchParamAsArray"
+
+// collections
+let projects = await getCollection("projects")
+const allTools = await getCollection("tools")
+
+const filters = getSearchParamAsArray(Astro.url, "tools")
+
+if (filters.length > 0) {
+  projects = projects.filter((project) => {
+    const tools = project.data.icons.map((icon) => icon.id)
+    return filters.some((filter) => tools.includes(filter))
+  })
+}
+---
+
+<BaseLayout
+  title="Stephen Kiiyuru's Projects"
+  description="Here are some recent projects I've done"
+>
+  <Container>
+    <Hero />
+    <section class="py-10 grid gap-4">
+      <div class="flex gap-4 flex-wrap items-center">
+        <p class="font-bold">FILTER BY TOOLS</p>
+        {
+          filters.length > 0 && (
+            <Badge id="clear-all" pressed={true} aria-pressed={"true"}>
+              Clear All
+            </Badge>
+          )
+        }
+      </div>
+
+      <ul class="flex gap-4 flex-wrap items-center">
+        {
+          allTools.map(({ data, id }) => {
+            const isPressed = filters.includes(id)
+            return (
+              <Badge
+                data-tool={id}
+                aria-pressed={isPressed ? "true" : "false"}
+                pressed={isPressed}
+              >
+                {data.title}
+              </Badge>
+            )
+          })
+        }
+      </ul>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 items-center">
+        {projects.map(({ data }) => <ProjectCard data={data} />)}
+      </div>
+    </section>
+  </Container>
+  <ContactForm />
+</BaseLayout>
+
+<script>
+  import getSearchParamAsArray from "@/lib/getSearchParamAsArray"
+  import setNewURLParams from "@/lib/setNewURLParams"
+
+  const filterButtons = document.querySelectorAll(
+    "[data-tool]"
+  ) as NodeListOf<HTMLButtonElement>
+
+  const clearAllButton = document.querySelector("#clear-all")
+
+  // clear filters
+  clearAllButton?.addEventListener("click", () => {
+    window.location.href = "projects"
+  })
+
+  // update filters
+  filterButtons.forEach((button) =>
+    button.addEventListener("click", () => {
+      const isPressed = button.getAttribute("aria-pressed") === "true"
+
+      button.setAttribute("aria-pressed", isPressed ? "false" : "true")
+
+      const currentUrl = new URL(window.location.href)
+
+      const existingParams = getSearchParamAsArray(currentUrl, "tools")
+      const newParams = isPressed
+        ? existingParams.filter((param) => param !== button.dataset.tool)
+        : ([...existingParams, button.dataset.tool] as string[])
+
+      const newUrl = setNewURLParams({
+        url: currentUrl,
+        key: "tools",
+        valueArray: newParams,
+      })
+
+      window.location.assign(newUrl.toString())
+    })
+  )
+</script>

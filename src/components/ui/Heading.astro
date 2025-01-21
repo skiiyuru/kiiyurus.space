@@ -1,0 +1,21 @@
+---
+const styles = {
+  h1: "text-3xl lg:text-5xl font-display",
+  h2: "text-2xl lg:text-4xl font-bold",
+  h3: "text-xl lg:text-3xl font-display font-semibold",
+  h4: "text-xl lg:text-2xl font-bold",
+}
+
+type Props = {
+  tagName: keyof typeof styles
+  classes?: string
+}
+
+const { tagName, classes } = Astro.props
+
+const Tag = tagName
+---
+
+<Tag class:list={["text-balance", styles[tagName], classes]}>
+  <slot />
+</Tag>

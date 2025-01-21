@@ -1,0 +1,23 @@
+---
+// css & fonts
+import "@fontsource/abril-fatface"
+import "@fontsource/poppins"
+import "@fontsource-variable/pixelify-sans"
+import "@fontsource-variable/open-sans"
+
+// components
+import Nav from "@/components/Nav.astro"
+import BaseHead from "./BaseHead.astro"
+import Footer from "@/components/Footer.astro"
+---
+
+<html lang="en">
+  <BaseHead {...Astro.props} />
+  <body class="text-zinc-950">
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

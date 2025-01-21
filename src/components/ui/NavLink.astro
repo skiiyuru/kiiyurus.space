@@ -1,0 +1,32 @@
+---
+// components
+import { Icon } from "astro-icon/components"
+
+type Props = {
+  href: string
+  icon?: string
+  title: string
+  classes?: string
+}
+
+const { href, icon, title, classes } = Astro.props
+---
+
+<li>
+  <a class="relative group" href={href} aria-label={icon && title}>
+    {
+      icon ? (
+        <Icon
+          class:list={["size-14 hover:text-zinc-500", classes]}
+          name={icon}
+          aria-hidden="true"
+        />
+      ) : (
+        <>
+          <span class="font-semibold text-2xl font-display">{title}</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-2 bg-zinc-700 transition-all group-hover:w-full" />
+        </>
+      )
+    }
+  </a>
+</li>

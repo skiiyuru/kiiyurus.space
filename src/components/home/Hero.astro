@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets"
+
+import ButtonLink from "@/components/ui/ButtonLink.astro"
+import Heading from "@/components/ui/Heading.astro"
+
+import Container from "@/layouts/Container.astro"
+---
+
+<Container>
+  <header
+    aria-label="Introduction to Stephen"
+    class="flex flex-col gap-4 items-center py-10"
+  >
+    <Image
+      src={"https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uGeUHLnIsi8ZJcAXj1mhf6EtSI4kdGbxPuF0D"}
+      alt="smile"
+      format="avif"
+      class="text-zinc-950"
+      width={192}
+      height={192}
+    />
+    <Heading tagName="h1">Hi, I'm Stephen</Heading>
+    <p class="text-center text-balance md:w-4/5 lg:w-2/5">
+      I'm a Front End Engineer obsessed with immersive <strong>3D</strong> experiences.
+    </p>
+    <div class="flex gap-4">
+      <ButtonLink
+        href={"https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8u0TfRFc8THD4wJjrLt8EZKUdFqRVOcPM3XyIz"}
+        >Download Resume</ButtonLink
+      >
+      <ButtonLink href={"#contact-form"} variant="secondary"
+        >Let's Connect</ButtonLink
+      >
+    </div>
+  </header>
+</Container>

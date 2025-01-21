@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
+import Heading from "@/components/ui/Heading.astro"
+import ButtonLink from "@/components/ui/ButtonLink.astro"
+import FormattedDate from "@/components/ui/FormattedDate.astro"
+
+type Props = {
+  post: CollectionEntry<"posts">
+}
+
+const { post } = Astro.props
+
+const { title, description, image, pubDate } = post.data
+---
+
+<article
+  aria-label={title}
+  class="border-4 shadow-lg md:w-1/2 lg:w-1/4 h-fit group"
+>
+  <Image
+    src={image}
+    alt={title}
+    class="w-full group-hover:grayscale"
+    format="avif"
+    inferSize
+  />
+  <div class="px-4 py-6 grid gap-4">
+    <div class="grid gap-1">
+      <Heading tagName="h4">{title}</Heading>
+      <FormattedDate pubDate={pubDate} />
+    </div>
+    <p>{description}</p>
+    <ButtonLink href={`/blog/${post.id}`}>Read Post</ButtonLink>
+  </div>
+</article>

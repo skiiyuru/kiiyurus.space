@@ -1,0 +1,29 @@
+---
+import NavLink from "@/components/ui/NavLink.astro"
+
+const navData = [
+  {
+    title: "Projects",
+    href: "/projects",
+  },
+  {
+    title: "Home",
+    href: "/",
+    icon: "memory-cube",
+  },
+  {
+    title: "Writings",
+    href: "/blog",
+  },
+]
+---
+
+<nav class="flex justify-center border border-b-2 p-2">
+  <ul class="flex items-center gap-4">
+    {
+      navData.map((item) => (
+        <NavLink icon={item.icon} href={item.href} title={item.title} />
+      ))
+    }
+  </ul>
+</nav>

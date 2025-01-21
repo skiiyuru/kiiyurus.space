@@ -1,0 +1,118 @@
+---
+import Container from "@/layouts/Container.astro"
+
+import Heading from "./ui/Heading.astro"
+import { styles } from "@/components/ui/ButtonLink.astro"
+---
+
+<Container>
+  <section
+    id="contact-form"
+    aria-label="Contact Form"
+    class="py-10 flex justify-center"
+  >
+    <form id="contact-form" class="p-4 grid gap-4 border-4 md:w-4/5 lg:w-2/5">
+      <div class="grid gap-1.5">
+        <Heading tagName="h1">Let's Connect!</Heading>
+        <p class="text-balance">
+          Reach out below for inquiries, quotes or collaborations.
+        </p>
+      </div>
+
+      <div class="grid gap-1.5">
+        <label for="name">First name</label>
+        <input
+          required
+          type="text"
+          id="name"
+          name="name"
+          placeholder="e.g. Stephen"
+          class="border-2 rounded-none p-2"
+        />
+      </div>
+
+      <div class="grid gap-1.5">
+        <label for="email">Email</label>
+        <input
+          required
+          type="email"
+          id="email"
+          name="email"
+          placeholder="e.g. hi@mail.com"
+          class="border-2 rounded-none p-2"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class:list={["py-1 px-4 w-fit font-semibold", styles.primary]}
+        >Contact Me</button
+      >
+
+      <p id="message" class="font-bold"></p>
+    </form>
+  </section>
+</Container>
+
+<script>
+  const form = document.querySelector("#contact-form") as HTMLFormElement
+  const paragraph = document.querySelector("#message") as HTMLParagraphElement
+  const styles = {
+    success: "text-green-700",
+    error: "text-red-700",
+  }
+
+  function updateMessage(message: string, type: "error" | "success") {
+    paragraph.classList.add(styles[type])
+    paragraph.textContent = message
+
+    setTimeout(() => {
+      paragraph.classList.remove(styles[type])
+      paragraph.textContent = ""
+    }, 3000)
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault()
+
+    const formData = new FormData(form)
+    const { name, email } = Object.fromEntries(formData)
+
+    if (!name || typeof name !== "string" || name.length < 2) {
+      return updateMessage("Please enter a valid name", "error")
+    }
+
+    if (!email || typeof email !== "string" || !email.includes("@")) {
+      return updateMessage("Please enter a valid email", "error")
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/contacts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+        }),
+      })
+
+      if (!res.ok) {
+        throw new Error("Response was not OK")
+      }
+
+      form.reset()
+      return updateMessage("Thanks for reaching out", "success")
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message)
+        return updateMessage(error.message, "error")
+      }
+      return updateMessage(
+        "Something went wrong. Please try again later.",
+        "error"
+      )
+    }
+  })
+</script>

@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content"
+
+import Heading from "@/components/ui/Heading.astro"
+import ButtonLink from "@/components/ui/ButtonLink.astro"
+import ProjectCard from "@/components/ui/ProjectCard.astro"
+import Container from "@/layouts/Container.astro"
+
+const projects = await getCollection("projects")
+---
+
+<Container>
+  <section
+    aria-label="Recent Projects"
+    class="flex flex-col gap-10 items-center py-10"
+  >
+    <div class="flex flex-col gap-4 items-center">
+      <Heading tagName="h2">Don't take my word for it!</Heading>
+      <p class="md:w-72 text-center text-balance">
+        Here are some recent websites and apps you can explore for yourself
+      </p>
+      <ButtonLink href="/projects" variant="secondary"
+        >See all projects</ButtonLink
+      >
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {projects.slice(0, 3).map(({ data }) => <ProjectCard data={data} />)}
+    </div>
+  </section>
+</Container>

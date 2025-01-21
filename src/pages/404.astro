@@ -1,0 +1,13 @@
+---
+export const prerender = true
+
+import ContactForm from "@/components/ContactForm.astro"
+import Hero from "@/components/404/Hero.astro"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+---
+
+<BaseLayout title="Not found">
+  <Hero />
+
+  <ContactForm />
+</BaseLayout>
