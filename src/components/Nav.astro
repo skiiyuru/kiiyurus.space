@@ -5,24 +5,32 @@ const navData = [
   {
     title: "Projects",
     href: "/projects",
+    class: "",
   },
   {
     title: "Home",
     href: "/",
     icon: "memory-cube",
+    class: "hover:animate-spin",
   },
   {
     title: "Writings",
     href: "/blog",
+    class: "",
   },
 ]
 ---
 
-<nav class="flex justify-center border border-b-2 p-2">
+<nav class="flex justify-center p-2">
   <ul class="flex items-center gap-4">
     {
       navData.map((item) => (
-        <NavLink icon={item.icon} href={item.href} title={item.title} />
+        <NavLink
+          icon={item.icon}
+          href={item.href}
+          title={item.title}
+          classes={item.class}
+        />
       ))
     }
   </ul>

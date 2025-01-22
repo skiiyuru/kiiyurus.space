@@ -6,26 +6,23 @@ import NavLink from "@/components/ui/NavLink.astro"
 import { socialData } from "@/data/siteData"
 ---
 
-<footer class="py-10 container">
-  <div class="flex justify-between items-center gap-2">
-    <p class="text-balance">
-      &copy; <span id="copyright">{new Date().getFullYear()}</span>
-      Stephen Kiiyuru. All rights reserved.
-    </p>
-
-    <ul class="flex gap-4">
-      {
-        socialData.map((item) => (
-          <NavLink
-            href={item.href}
-            title={item.title}
-            icon={item.icon}
-            classes="size-8"
-          />
-        ))
-      }
-    </ul>
-  </div>
+<footer class="grid gap-4 py-10 text-center">
+  <ul class="flex gap-4 justify-center">
+    {
+      socialData.map((item) => (
+        <NavLink
+          href={item.href}
+          title={item.title}
+          icon={item.icon}
+          classes="size-6 lg:size-8"
+        />
+      ))
+    }
+  </ul>
+  <p class="text-balance text-base">
+    &copy; <span id="copyright">{new Date().getFullYear()}</span>
+    Stephen Kiiyuru. All rights reserved.
+  </p>
 </footer>
 
 <script>

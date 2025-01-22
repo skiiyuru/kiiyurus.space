@@ -33,18 +33,20 @@ if (filters.length > 0) {
   title="Stephen Kiiyuru's Projects"
   description="Here are some recent projects I've done"
 >
-  <Container>
+  <section class="px-4 grid gap-14 bg-zinc-900 py-10">
     <Hero />
-    <section class="py-10 grid gap-4">
-      <div class="flex gap-4 flex-wrap items-center">
-        <p class="font-bold">FILTER BY TOOLS</p>
-        {
-          filters.length > 0 && (
-            <Badge id="clear-all" pressed={true} aria-pressed={"true"}>
-              Clear All
-            </Badge>
-          )
-        }
+    <div class="grid gap-4">
+      <div class="flex gap-4 items-center">
+        <p class="font-bold">FILTER BY TECH</p>
+        <div class="flex gap-4 flex-wrap items-center">
+          {
+            filters.length > 0 && (
+              <Badge id="clear-all" pressed={true} aria-pressed={"true"}>
+                Clear All
+              </Badge>
+            )
+          }
+        </div>
       </div>
 
       <ul class="flex gap-4 flex-wrap items-center">
@@ -63,12 +65,13 @@ if (filters.length > 0) {
           })
         }
       </ul>
+    </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 items-center">
-        {projects.map(({ data }) => <ProjectCard data={data} />)}
-      </div>
-    </section>
-  </Container>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
+      {projects.map(({ data }) => <ProjectCard data={data} />)}
+    </div>
+  </section>
+
   <!-- <ContactForm /> -->
 </BaseLayout>
 

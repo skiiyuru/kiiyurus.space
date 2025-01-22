@@ -21,8 +21,8 @@ const { title, url, icons, thumbnail } = data
 const iconData = await getEntries(icons)
 ---
 
-<article aria-label={title} class="border-4 hover:shadow-lg">
-  <a href={url} class="flex flex-col">
+<article aria-label={title} class="hover:shadow-lg">
+  <a href={url}>
     <Image
       src={thumbnail}
       class={"max-h-48"}
@@ -30,12 +30,10 @@ const iconData = await getEntries(icons)
       format="avif"
       inferSize
     />
-    <div class="p-4">
-      <div class="flex gap-3 items-center pb-2">
-        <Heading tagName="h4">{title}</Heading>
-        <Icon name="external-link" class="size-4" />
-      </div>
-      <ul class="flex gap-2">
+    <div class="grid grid-cols-3 items-center p-4 border border-t-0 text-start">
+      <Heading classes="col-span-2" tagName="h3">{title}</Heading>
+
+      <ul class="flex gap-2 justify-end col-span-1">
         {
           iconData.map(({ data }) => (
             <li>

@@ -17,7 +17,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
+        sans: ["Big Shoulders Text Variable", ...defaultTheme.fontFamily.sans],
         display: ["Pixelify Sans Variable", ...defaultTheme.fontFamily.sans],
       },
     },

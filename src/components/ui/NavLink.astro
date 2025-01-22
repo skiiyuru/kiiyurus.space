@@ -17,14 +17,16 @@ const { href, icon, title, classes } = Astro.props
     {
       icon ? (
         <Icon
-          class:list={["size-14 hover:text-zinc-500", classes]}
+          class:list={["size-12 lg:size-14 hover:text-zinc-500", classes]}
           name={icon}
           aria-hidden="true"
         />
       ) : (
         <>
-          <span class="font-semibold text-2xl font-display">{title}</span>
-          <span class="absolute -bottom-1 left-0 w-0 h-2 bg-zinc-700 transition-all group-hover:w-full" />
+          <span class="font-semibold text-xl lg:text-2xl font-display">
+            {title}
+          </span>
+          <span class="absolute -bottom-1 left-0 w-0 h-2 bg-zinc-500 transition-all group-hover:w-full" />
         </>
       )
     }

@@ -14,23 +14,14 @@ const { post } = Astro.props
 const { title, description, image, pubDate } = post.data
 ---
 
-<article
-  aria-label={title}
-  class="border-4 shadow-lg md:w-1/2 lg:w-1/4 h-fit group"
->
-  <Image
-    src={image}
-    alt={title}
-    class="w-full group-hover:grayscale"
-    format="avif"
-    inferSize
-  />
-  <div class="px-4 py-6 grid gap-4">
+<article aria-label={title} class="shadow-lg md:w-1/2 lg:w-1/4 h-fit group">
+  <Image src={image} alt={title} class="w-full" inferSize />
+  <div class="px-4 py-6 grid gap-4 border border-t-0">
     <div class="grid gap-1">
-      <Heading tagName="h4">{title}</Heading>
       <FormattedDate pubDate={pubDate} />
+      <Heading tagName="h3">{title}</Heading>
     </div>
     <p>{description}</p>
-    <ButtonLink href={`/blog/${post.id}`}>Read Post</ButtonLink>
+    <ButtonLink href={`/blog/${post.id}`}>Read article</ButtonLink>
   </div>
 </article>

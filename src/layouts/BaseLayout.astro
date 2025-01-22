@@ -4,6 +4,8 @@ import "@fontsource/abril-fatface"
 import "@fontsource/poppins"
 import "@fontsource-variable/pixelify-sans"
 import "@fontsource-variable/open-sans"
+// Supports weights 100-900
+import "@fontsource-variable/big-shoulders-text"
 
 // components
 import Nav from "@/components/Nav.astro"
@@ -13,9 +15,9 @@ import Footer from "@/components/Footer.astro"
 
 <html lang="en">
   <BaseHead {...Astro.props} />
-  <body class="text-zinc-950">
+  <body class="text-white text-xl font-normal bg-zinc-950 tracking-wide">
     <Nav />
-    <main>
+    <main class="p-4 grid gap-4">
       <slot />
     </main>
     <Footer />

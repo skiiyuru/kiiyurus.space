@@ -6,7 +6,7 @@ type Props = {
 const { pubDate } = Astro.props
 ---
 
-<time datetime={pubDate.toISOString()} class="text-zinc-400">
+<time datetime={pubDate.toISOString()} class="text-zinc-500">
   {
     pubDate.toLocaleDateString("en-US", {
       month: "long",

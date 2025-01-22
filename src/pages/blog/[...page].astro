@@ -31,38 +31,36 @@ const { page } = Astro.props
 ---
 
 <BaseLayout title=`My Writings  | Page ${page.currentPage}`>
-  <Container>
-    <section class="py-10 grid gap-6">
-      <div class="flex flex-col gap-4 items-center">
-        <Heading tagName="h1">My Writings</Heading>
-        <p class="lg:w-1/2 text-center">
-          I like to write about productivity, web development, design and
-          working with clients. Get a sense of what it's like to work with me
-          and understand my process.
-        </p>
-      </div>
-      <div class="flex flex-wrap gap-4 justify-center">
-        {page.data.map((post) => <PostCard post={post} />)}
-      </div>
-      <div class="flex gap-4 justify-center items-center">
-        {
-          page.url.prev && (
-            <ButtonLink href={page.url.prev} variant="badge">
-              {"<"}
-            </ButtonLink>
-          )
-        }
-        <p class="font-medium">
-          Page {page.currentPage}
-        </p>
-        {
-          page.url.next && (
-            <ButtonLink href={page.url.next} variant="badge">
-              {">"}
-            </ButtonLink>
-          )
-        }
-      </div>
-    </section>
-  </Container>
+  <section class="py-10 grid gap-10 bg-zinc-900 px-4">
+    <div class="grid gap-4 text-center">
+      <Heading tagName="h2">My Writings</Heading>
+      <p>
+        I like to write about productivity, web development, design and working
+        with clients. Get a sense of what it's like to work with me and
+        understand my process.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3">
+      {page.data.map((post) => <PostCard post={post} />)}
+    </div>
+    <div class="flex gap-4 justify-center items-center">
+      {
+        page.url.prev && (
+          <ButtonLink href={page.url.prev} variant="badge">
+            {"<"}
+          </ButtonLink>
+        )
+      }
+      <p class="font-medium">
+        Page {page.currentPage}
+      </p>
+      {
+        page.url.next && (
+          <ButtonLink href={page.url.next} variant="badge">
+            {">"}
+          </ButtonLink>
+        )
+      }
+    </div>
+  </section>
 </BaseLayout>
