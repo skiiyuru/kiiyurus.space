@@ -14,7 +14,7 @@ const { post } = Astro.props
 const { title, description, image, pubDate } = post.data
 ---
 
-<article aria-label={title} class="shadow-lg md:w-1/2 lg:w-1/4 h-fit group">
+<article aria-label={title} class="shadow-lg group">
   <Image src={image} alt={title} class="w-full" inferSize />
   <div class="px-4 py-6 grid gap-4 border border-t-0">
     <div class="grid gap-1">

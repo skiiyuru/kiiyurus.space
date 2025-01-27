@@ -1,12 +1,13 @@
 ---
 type Props = {
   pubDate: Date
+  className?: string
 }
 
-const { pubDate } = Astro.props
+const { pubDate, className } = Astro.props
 ---
 
-<time datetime={pubDate.toISOString()} class="text-zinc-500">
+<time datetime={pubDate.toISOString()} class=`text-zinc-500  ${className}`>
   {
     pubDate.toLocaleDateString("en-US", {
       month: "long",

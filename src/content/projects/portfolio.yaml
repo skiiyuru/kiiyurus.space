@@ -1,6 +1,7 @@
-title: 3D Portfolio
+title: Old Portfolio
 thumbnail: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uUSZ2DFRHe1lxv5PkHhDNc7dspRzIXWLA3m6j
 url: "https://skiiyuru.vercel.app/"
+isFeatured: false
 icons:
   - react
   - three

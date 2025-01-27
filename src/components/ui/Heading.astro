@@ -9,13 +9,17 @@ const styles = {
 type Props = {
   tagName: keyof typeof styles
   classes?: string
+  id?: string
 }
 
-const { tagName, classes } = Astro.props
+const { tagName, classes, id } = Astro.props
 
 const Tag = tagName
 ---
 
-<Tag class:list={["text-balance tracking-wider", styles[tagName], classes]}>
+<Tag
+  id={id}
+  class:list={["text-pretty tracking-wider", styles[tagName], classes]}
+>
   <slot />
 </Tag>

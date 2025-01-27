@@ -1,6 +1,7 @@
 title: Marble Race
 thumbnail: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8ujB3ONHpb8qY95kZod1xpu3CQsvtcfSKOrVmH
 url: "https://sk-marble-race.vercel.app/"
+isFeatured: true
 icons:
   - react
   - three

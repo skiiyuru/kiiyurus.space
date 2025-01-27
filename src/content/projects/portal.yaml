@@ -1,6 +1,7 @@
-title: Portal scene
+title: Portal
 thumbnail: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uCovm2vyUriFLG6eSvMZQDXJUk7Ezb89afTwK
 url: "https://kiiyuru-portal.vercel.app/"
+isFeatured: false
 icons:
   - three
   - blender

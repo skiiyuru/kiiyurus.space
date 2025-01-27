@@ -26,6 +26,7 @@ const projects = defineCollection({
       icons: z.array(reference("tools")),
       url: z.string().url(),
       thumbnail: z.string().url(),
+      isFeatured: z.boolean(),
     }),
 })
 

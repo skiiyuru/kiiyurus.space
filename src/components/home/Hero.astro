@@ -1,10 +1,6 @@
 ---
-import { Image } from "astro:assets"
-
 import ButtonLink from "@/components/ui/ButtonLink.astro"
 import Heading from "@/components/ui/Heading.astro"
-
-import Container from "@/layouts/Container.astro"
 ---
 
 <section
@@ -18,13 +14,17 @@ import Container from "@/layouts/Container.astro"
       height={192}
       class="text-white"
     /> -->
-  <Heading tagName="h2">Hi, I'm Kiiyuru</Heading>
-  <p class="text-center text-balance m-auto">
-    Some call me Steve and I'm a Software Engineer obsessed with immersive <strong
-      >3D</strong
-    > experiences.
+  <h2 class="text-4xl lg:text-5xl font-display tracking-wider text-pretty">
+    Hi, I'm Kiiyuru
+  </h2>
+  <p class="text-center text-pretty mx-auto">
+    a Software Engineer turning pixels into immersive playgrounds. Step into the
+    future with me.
   </p>
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 justify-items-center">
+  <div
+    id="buttons-container"
+    class="grid grid-cols-1 gap-4 justify-items-center"
+  >
     <ButtonLink
       href={"https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8u0TfRFc8THD4wJjrLt8EZKUdFqRVOcPM3XyIz"}
     >
@@ -33,3 +33,46 @@ import Container from "@/layouts/Container.astro"
     <ButtonLink href={"#"} variant="secondary">Reach out</ButtonLink>
   </div>
 </section>
+
+<style>
+  p,
+  h2 {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  @media (min-width: 640px) {
+    section {
+      grid-template-columns: subgrid;
+      grid-template-rows: subgrid;
+      grid-row: 1/4;
+      grid-column: 1/2;
+    }
+
+    #buttons-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    section {
+      grid-column: 1/2;
+      grid-row: 1/4;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    section {
+      grid-column: 1/3;
+      grid-row: 1/4;
+    }
+
+    h2,
+    p {
+      grid-column: span 2;
+    }
+    #buttons-container {
+      grid-column: span 2;
+    }
+  }
+</style>

@@ -4,19 +4,20 @@ import { getCollection } from "astro:content"
 
 // layouts
 import BaseLayout from "@/layouts/BaseLayout.astro"
-import Container from "@/layouts/Container.astro"
 
 //components
-import ContactForm from "@/components/ContactForm.astro"
-import Hero from "@/components/projects/Hero.astro"
-import ProjectCard from "@/components/ui/ProjectCard.astro"
 import Badge from "@/components/ui/Badge.astro"
+import ProjectCard from "@/components/ui/ProjectCard.astro"
 
 // lib
 import getSearchParamAsArray from "@/lib/getSearchParamAsArray"
 
 // collections
 let projects = await getCollection("projects")
+projects = projects.sort(
+  (a, b) => Number(b.data.isFeatured) - Number(a.data.isFeatured)
+)
+
 const allTools = await getCollection("tools")
 
 const filters = getSearchParamAsArray(Astro.url, "tools")
@@ -34,8 +35,20 @@ if (filters.length > 0) {
   description="Here are some recent projects I've done"
 >
   <section class="px-4 grid gap-14 bg-zinc-900 py-10">
-    <Hero />
-    <div class="grid gap-4">
+    <div id="title-wrapper">
+      <h2
+        class="text-4xl lg:text-5xl font-display tracking-wider
+      text-center
+      text-pretty"
+      >
+        Take a look
+      </h2>
+      <p class="text-center">
+        Immerse yourself in what I’ve built and experience it firsthand.
+      </p>
+    </div>
+
+    <div id="filter-wrapper" class="grid gap-4">
       <div class="flex gap-4 items-center">
         <p class="font-bold">FILTER BY TECH</p>
         <div class="flex gap-4 flex-wrap items-center">
@@ -67,12 +80,16 @@ if (filters.length > 0) {
       </ul>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
-      {projects.map(({ data }) => <ProjectCard data={data} />)}
+    <div id="cards-wrapper" class="grid gap-6 items-center">
+      {
+        projects.map(({ data }) => (
+          <div id="card" class={`${data.isFeatured ? "featured" : ""}`}>
+            <ProjectCard data={data} />
+          </div>
+        ))
+      }
     </div>
   </section>
-
-  <!-- <ContactForm /> -->
 </BaseLayout>
 
 <script>
@@ -114,3 +131,68 @@ if (filters.length > 0) {
     })
   )
 </script>
+
+<style>
+  @media (min-width: 640px) {
+    section {
+      grid-template-columns: subgrid;
+      grid-column: span 2;
+    }
+
+    h2,
+    p {
+      grid-column: span 2;
+    }
+
+    #filter-wrapper {
+      grid-column: span 2;
+    }
+
+    #cards-wrapper {
+      grid-template-columns: subgrid;
+      grid-auto-flow: row;
+      grid-column: span 2;
+      /* grid-auto-rows: minmax(100px, auto); */
+    }
+
+    #title-wrapper {
+      grid-column: span 2;
+    }
+  }
+
+  @media (min-width: 768px) {
+    section {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    #cards-wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    section {
+      grid-template-columns: subgrid;
+      grid-column: span 6;
+    }
+
+    #title-wrapper {
+      grid-column: span 6;
+    }
+
+    #filter-wrapper {
+      /* margin: 0 auto; */
+      grid-column: span 6;
+    }
+
+    #cards-wrapper {
+      grid-column: span 6;
+    }
+
+    #cards-wrapper #card.featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+</style>

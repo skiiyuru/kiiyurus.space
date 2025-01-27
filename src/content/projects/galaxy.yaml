@@ -1,6 +1,7 @@
-title: Create your own galaxy
+title: Galaxy
 thumbnail: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8usS5lM5OLYPkQpCjwmsig13AtTbFnOaRNlW5d
 url: "https://kiiyuru-galaxy.vercel.app/"
+isFeatured: false
 icons:
   - three
   - glsl

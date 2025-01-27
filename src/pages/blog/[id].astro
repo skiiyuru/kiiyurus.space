@@ -39,14 +39,15 @@ const { title, description, pubDate, image } = post.data
 ---
 
 <BaseLayout title={title} description={description}>
-  <article
-    aria-label=`Article on ${title}`
-    class="grid gap-10 bg-zinc-900 px-4 py-10"
-  >
+  <section aria-label=`section on ${title}` class="bg-zinc-900 px-4 py-10">
     <div class="grid gap-4 text-center">
-      <FormattedDate pubDate={pubDate} />
-      <Heading classes="font-sans font-bold" tagName="h2">{title}</Heading>
-      <p class="max-w-prose text-center text-pretty md:w-4/5 lg:w-3/5">
+      <FormattedDate pubDate={pubDate} className="mx-auto" />
+      <h2
+        class="text-4xl lg:text-5xl font-sans font-bold tracking-wider text-balance"
+      >
+        {title}
+      </h2>
+      <p class="text-center text-balance">
         {description}
       </p>
     </div>
@@ -59,13 +60,42 @@ const { title, description, pubDate, image } = post.data
       height={500}
     />
     <div
-      class="prose prose-headings:text-white text-balance text-white font-normal tracking-wider prose-lg prose-code:text-red-400
-      prose-a:text-sky-400 prose-a:no-underline prose-h2:text-pretty prose-h3:text-pretty prose-h4:text-pretty"
+      id="content"
+      class="prose-headings:text-white text-white tracking-wider
+      prose-lg md:prose-xl prose-code:text-red-400 prose-a:text-sky-400
+      prose-a:no-underline prose-h2:text-pretty prose-h3:text-pretty prose-h4:text-pretty
+      prose-h2:font-bold prose-h3:font-bold prose-h4:font-bold"
     >
       <Content />
     </div>
-  </article>
-  <section aria-label="Post content" class="flex flex-col items-center">
-    <article></article>
   </section>
 </BaseLayout>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  @media (min-width: 640px) {
+    section {
+      grid-template-columns: subgrid;
+      grid-column: span 2;
+    }
+
+    section > * {
+      grid-column: span 2;
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    section {
+      grid-column: span 6;
+    }
+
+    section > * {
+      grid-column: 2/6;
+    }
+  }
+</style>
