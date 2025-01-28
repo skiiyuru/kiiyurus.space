@@ -5,7 +5,9 @@ import { defineConfig } from "astro/config"
 
 import node from "@astrojs/node"
 
-import react from "@astrojs/react";
+import react from "@astrojs/react"
+
+import glsl from "vite-plugin-glsl"
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,4 +28,8 @@ export default defineConfig({
   }),
 
   output: "server",
+
+  vite: {
+    plugins: [glsl()],
+  },
 })
