@@ -9,8 +9,16 @@ import {
 import portalVS from "@/shaders/portal/vertex.glsl"
 import portalFS from "@/shaders/portal/fragment.glsl"
 import * as THREE from "three"
-import { extend, useFrame } from "@react-three/fiber"
+import { extend, useFrame, type Object3DNode } from "@react-three/fiber"
 import { useRef } from "react"
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      portalMaterial: Object3DNode<THREE.ShaderMaterial, typeof PortalMaterial>
+    }
+  }
+}
 
 const BG_COLOUR = "#18181b"
 const PORTAL_COLOUR = "#A8DBEE"
@@ -57,15 +65,12 @@ export default function Experience() {
       />
 
       <Center>
-        <mesh geometry={nodes.baked.geometry}>
-          <meshBasicMaterial
-            map={bakedTexture}
-            // map-flipY={true}
-          />
+        <mesh geometry={(nodes.baked as THREE.Mesh).geometry}>
+          <meshBasicMaterial map={bakedTexture} />
         </mesh>
 
         <mesh
-          geometry={nodes.poleLightA.geometry}
+          geometry={(nodes.poleLightA as THREE.Mesh).geometry}
           position={nodes.poleLightA.position}
           scale={[1.3, 1, 1]}
         >
@@ -73,7 +78,7 @@ export default function Experience() {
         </mesh>
 
         <mesh
-          geometry={nodes.poleLightB.geometry}
+          geometry={(nodes.poleLightB as THREE.Mesh).geometry}
           position={nodes.poleLightB.position}
           scale={[1.3, 1, 1]}
         >
@@ -81,7 +86,7 @@ export default function Experience() {
         </mesh>
 
         <mesh
-          geometry={nodes.portalLight.geometry}
+          geometry={(nodes.portalLight as THREE.Mesh).geometry}
           position={nodes.portalLight.position}
           rotation={nodes.portalLight.rotation}
         >
