@@ -12,7 +12,7 @@ import * as THREE from "three"
 import { extend, useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 
-const BG_COLOUR = "#000907"
+const BG_COLOUR = "#18181b"
 const PORTAL_COLOUR = "#A8DBEE"
 
 // custom portal shader
@@ -49,11 +49,11 @@ export default function Experience() {
         makeDefault
         enablePan={false}
         // minDistance={5}
-        maxDistance={7}
+        maxDistance={4}
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 4}
         autoRotate
-        autoRotateSpeed={0.7}
+        autoRotateSpeed={0.4}
       />
 
       <Center>
@@ -85,22 +85,6 @@ export default function Experience() {
           position={nodes.portalLight.position}
           rotation={nodes.portalLight.rotation}
         >
-          {/* <meshBasicMaterial color={"#A8DBEE"} /> */}
-          {/* <shaderMaterial
-            vertexShader={portalVS}
-            fragmentShader={portalFS}
-            uniforms={{
-              uTime: {
-                value: 0,
-              },
-              uColorStart: {
-                value: new THREE.Color(PORTAL_COLOUR),
-              },
-              uColorEnd: {
-                value: new THREE.Color(BG_COLOUR),
-              },
-            }}
-          /> */}
           <portalMaterial ref={portalRef} />
         </mesh>
 
