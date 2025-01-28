@@ -3,7 +3,7 @@ import NavLink from "@/components/ui/NavLink.astro"
 
 const navData = [
   {
-    title: "Projects",
+    title: "Showcase",
     href: "/projects",
     class: "",
   },
@@ -14,14 +14,14 @@ const navData = [
     class: "hover:animate-spin",
   },
   {
-    title: "Writings",
+    title: "Stories",
     href: "/blog",
     class: "",
   },
 ]
 ---
 
-<nav class="flex justify-center p-2">
+<nav class="flex justify-center py-3">
   <ul class="flex items-center gap-4">
     {
       navData.map((item) => (

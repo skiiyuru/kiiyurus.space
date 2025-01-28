@@ -32,13 +32,20 @@ const iconData = await getEntries(icons)
       loading="eager"
     />
     <div class="grid grid-cols-3 items-center p-4 border border-t-0 text-start">
-      <Heading classes="col-span-2" tagName="h3">{title}</Heading>
+      <h3 class="col-span-2 text-2xl lg:text-3xl font-bold">
+        {title}
+      </h3>
 
       <ul class="flex gap-2 justify-end col-span-1">
         {
           iconData.map(({ data }) => (
             <li>
-              <Icon name={data.icon} title={data.icon} aria-label={data.icon} />
+              <Icon
+                name={data.icon}
+                title={data.icon}
+                aria-label={data.icon}
+                class="size-5 lg:size-7"
+              />
             </li>
           ))
         }
