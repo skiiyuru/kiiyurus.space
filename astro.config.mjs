@@ -3,11 +3,11 @@ import tailwind from "@astrojs/tailwind"
 import icon from "astro-icon"
 import { defineConfig } from "astro/config"
 
-import node from "@astrojs/node"
-
 import react from "@astrojs/react"
 
 import glsl from "vite-plugin-glsl"
+
+import netlify from "@astrojs/netlify"
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,13 +23,10 @@ export default defineConfig({
     remotePatterns: [{ protocol: "https" }],
   },
 
-  adapter: node({
-    mode: "middleware",
-  }),
-
-  output: "server",
-
   vite: {
     plugins: [glsl()],
   },
+
+  adapter: netlify(),
+  output: "server",
 })
