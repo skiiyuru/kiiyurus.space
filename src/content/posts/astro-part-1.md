@@ -2,7 +2,7 @@
 title: "Hosting an Astro site in Digital Ocean: Part 1"
 description: "From Netlify newbie to self-hosting superhero: Join me on a wild ride as I ditch the training wheels and set up my Astro site on Digital Ocean!"
 pubDate: 2025-02-03
-image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uf78FG1IrOTqpFo1QjXg5nImZbzJAHtedx0V2
+image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uGGYeTEIsi8ZJcAXj1mhf6EtSI4kdGbxPuF0D
 isDraft: false
 ---
 

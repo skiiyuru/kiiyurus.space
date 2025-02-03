@@ -8,14 +8,20 @@ type Props = {
   icon?: string
   title: string
   classes?: string
+  target?: string
 }
 
-const { href, icon, title, classes } = Astro.props
+const { href, icon, title, classes, target } = Astro.props
 const segment = extractSegmentURL(Astro.url.pathname)
 ---
 
 <li>
-  <a class="relative group" href={href} aria-label={icon && title}>
+  <a
+    class="relative group"
+    href={href}
+    aria-label={icon && title}
+    target={target}
+  >
     {
       icon ? (
         <Icon
