@@ -20,7 +20,7 @@ Back to the discussion at hand, while taking Jem’s course, I discovered the st
 4. Setup the web server
 5. Clone the astro site into the server
 
-This article will mainly focus on step 3.
+This article will mainly focus on step 4.
 
 ## The server
 
@@ -38,53 +38,53 @@ Nginx has a number of files and folders that control its operations. By default 
 2. Created an app directory in `/var/www/`
 3. Created a file `server.js` and added the code below
 
-   ```jsx
-   const http = require("http")
+```jsx
+const http = require("http")
 
-   http
-     .createServer(function (req, res) {
-       res.write("On the way to being a fullstack engineer!")
-       res.end()
-     })
-     .listen(3000)
+http
+  .createServer(function (req, res) {
+    res.write("On the way to being a fullstack engineer!")
+    res.end()
+  })
+  .listen(3000)
 
-   console.log("server started on port 3000")
-   ```
+console.log("server started on port 3000")
+```
 
 4. Created a virtual server in `etc/nginx/sites-enabled/kiiyurus.space` that will bridge the communication between the the node server and nginx server . Notice it uses the same IP as the node server
 
 ```jsx
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
+listen 80 default_server;
+listen [::]:80 default_server;
 
-	root /var/www/html;
-	index index.html;
+root /var/www/html;
+index index.html;
 
-	server_name kiiyurus.space;
+server_name kiiyurus.space;
 
-	location / {
-	    proxy_pass http://127.0.0.1:3000/;
-	}
+location / {
+    proxy_pass http://127.0.0.1:3000/;
+  }
 }
 ```
 
-1. Added the virtual server to nginx configuration`/etc/nginx/nginx.conf`
+5. Added the virtual server to nginx configuration`/etc/nginx/nginx.conf`
 
-   ```bash
-       ##
-       # Virtual Host Configs
-       ##
+```bash
+    ##
+    # Virtual Host Configs
+    ##
 
-       include /etc/nginx/conf.d/*.conf;
-       include /etc/nginx/sites-enabled/kiiyurus-space;
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/kiiyurus-space;
 
-   ```
+```
 
-2. Checked that nginx was still okay: `sudo nginx -t`
-3. Restarted nginx: `sudo service nginx restart`
-4. Started the node app: `node server.js`
-5. Tested it by entering my server’s IP address to the browser and got this
+6. Checked that nginx was still okay: `sudo nginx -t`
+7. Restarted nginx: `sudo service nginx restart`
+8. Started the node app: `node server.js`
+9. Tested it by entering my server’s IP address to the browser and got this
 
 ![Node server](https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uPkxWcRbYD9N05itq8hZpv341cEdzHGOob6TL)
 

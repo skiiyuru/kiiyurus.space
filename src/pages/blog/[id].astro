@@ -55,8 +55,8 @@ const { title, description, pubDate, image } = post.data
     <Image inferSize src={image} alt={title} />
     <div
       id="content"
-      class="font-light prose-headings:text-white text-white tracking-wider
-      prose-lg md:prose-xl prose-code:text-red-400 prose-a:text-sky-400
+      class="prose md:prose-lg lg:prose-xl font-light text-white prose-headings:text-white tracking-wider
+      prose-code:text-red-400 prose-a:text-sky-400
       prose-a:no-underline prose-h2:text-pretty prose-h3:text-pretty prose-h4:text-pretty
       prose-h2:font-bold prose-h3:font-bold prose-h4:font-bold"
     >
@@ -74,6 +74,7 @@ const { title, description, pubDate, image } = post.data
 
   #content {
     display: grid;
+    max-width: 100%;
   }
   @media (min-width: 640px) {
     section {

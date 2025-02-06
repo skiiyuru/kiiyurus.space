@@ -28,11 +28,11 @@ I heard about CSS Grid and looked it up but the few tutorials I skimmed through 
 
 Imagine you have a web page made up of a section and multiple cards. On mobile devices, maybe it would look something like this:
 
-<!-- ![Screenshot 2025-01-13 160035.png](Screenshot_2025-01-13_160035.png) -->
+![mobile-grid](https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uvpWW4ZlyXWM8urlcVn9KbfsZiQGHyNPegoIk)
 
 Not so complicated right? But what about a fancy desktop layout like this:
 
-<!-- ![Screenshot 2025-01-13 155939.png](Screenshot_2025-01-13_155939.png) -->
+![desktop-grid](https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uYhRDB6LEYTZ7sfj68qwlrdJBIL0MUoxikGm2)
 
 Grid to the rescue! We can set our parent element `section` to become a grid by saying
 
