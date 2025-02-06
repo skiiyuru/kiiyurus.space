@@ -21,11 +21,10 @@ const { title, url, icons, thumbnail, isFeatured } = data
 const iconData = await getEntries(icons)
 ---
 
-<article aria-label={title} class=`group ${isFeatured ? "featured" : ""}`>
+<article aria-label={title} class=`${isFeatured ? "featured" : ""}`>
   <a href={url} target="_blank">
     <Image
       src={thumbnail}
-      class={" transition-all ease-in duration-300 grayscale group-hover:grayscale-0"}
       alt={title}
       format="avif"
       inferSize
