@@ -1,7 +1,8 @@
-title: Old Portfolio
-thumbnail: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uUSZ2DFRHe1lxv5PkHhDNc7dspRzIXWLA3m6j
+title: My Stadium
+description: A football-themed portfolio featuring the Red Devil mascot of Manchester United.
+thumbnail: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uq0f2yQgDfrnTBivVgb2hFwzPmocX3SMCIujq
 url: "https://skiiyuru.vercel.app/"
-isFeatured: false
+isFeatured: true
 icons:
   - react
   - three

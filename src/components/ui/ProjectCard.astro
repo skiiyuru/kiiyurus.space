@@ -16,7 +16,7 @@ type Props = {
 
 const { data } = Astro.props
 
-const { title, url, icons, thumbnail, isFeatured } = data
+const { title, url, icons, thumbnail, isFeatured, description } = data
 
 const iconData = await getEntries(icons)
 ---
@@ -49,7 +49,7 @@ const iconData = await getEntries(icons)
           ))
         }
       </ul>
-      <p class="hidden">this is a long description</p>
+      <p class="hidden">{description}</p>
     </div>
   </a>
 </article>
@@ -64,6 +64,8 @@ const iconData = await getEntries(icons)
     @container card (min-width: 500px) {
       article.featured p {
         display: block;
+        grid-template-columns: subgrid;
+        grid-column: span 2;
       }
     }
   }
