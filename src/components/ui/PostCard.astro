@@ -1,12 +1,12 @@
 ---
-import { Image } from "astro:assets"
-import type { CollectionEntry } from "astro:content"
-import Heading from "@/components/ui/Heading.astro"
-import ButtonLink from "@/components/ui/ButtonLink.astro"
-import FormattedDate from "@/components/ui/FormattedDate.astro"
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+import Heading from '@/components/ui/Heading.astro'
+import ButtonLink from '@/components/ui/ButtonLink.astro'
+import FormattedDate from '@/components/ui/FormattedDate.astro'
 
 type Props = {
-  post: CollectionEntry<"posts">
+  post: CollectionEntry<'posts'>
 }
 
 const { post } = Astro.props
@@ -15,7 +15,7 @@ const { title, description, image, pubDate } = post.data
 ---
 
 <article aria-label={title} class="shadow-lg group">
-  <Image src={image} alt={title} class="w-full" inferSize />
+  <Image src={image} alt={title} width={830} height={450} format="avif" />
   <div class="px-4 py-6 grid gap-4 border border-t-0">
     <div class="grid gap-1">
       <FormattedDate pubDate={pubDate} />

@@ -1,17 +1,17 @@
 ---
 // astro tools
-import { Icon } from "astro-icon/components"
-import { getEntries } from "astro:content"
-import { Image } from "astro:assets"
+import { Icon } from 'astro-icon/components'
+import { getEntries } from 'astro:content'
+import { Image } from 'astro:assets'
 
 // types
-import type { CollectionEntry } from "astro:content"
+import type { CollectionEntry } from 'astro:content'
 
 // components
-import Heading from "@/components/ui/Heading.astro"
+import Heading from '@/components/ui/Heading.astro'
 
 type Props = {
-  data: CollectionEntry<"projects">["data"]
+  data: CollectionEntry<'projects'>['data']
 }
 
 const { data } = Astro.props
@@ -23,13 +23,7 @@ const iconData = await getEntries(icons)
 
 <article aria-label={title} class=`${isFeatured ? "featured" : ""}`>
   <a href={url} target="_blank">
-    <Image
-      src={thumbnail}
-      alt={title}
-      format="avif"
-      inferSize
-      loading="eager"
-    />
+    <Image src={thumbnail} alt={title} format="avif" width={830} height={450} />
     <div class="grid grid-cols-3 items-center p-4 border border-t-0 text-start">
       <h3 class="col-span-2 text-2xl lg:text-3xl font-bold">
         {title}

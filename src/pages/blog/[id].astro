@@ -1,20 +1,20 @@
 ---
 export const prerender = true
 
-import { render } from "astro:content"
+import { render } from 'astro:content'
 
-import FormattedDate from "@/components/ui/FormattedDate.astro"
-import Heading from "@/components/ui/Heading.astro"
-import BaseLayout from "@/layouts/BaseLayout.astro"
-import Container from "@/layouts/Container.astro"
-import { Image } from "astro:assets"
-import { getCollection } from "astro:content"
+import FormattedDate from '@/components/ui/FormattedDate.astro'
+import Heading from '@/components/ui/Heading.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Container from '@/layouts/Container.astro'
+import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
 
-import type { GetStaticPaths } from "astro"
-import type { CollectionEntry } from "astro:content"
+import type { GetStaticPaths } from 'astro'
+import type { CollectionEntry } from 'astro:content'
 
 export const getStaticPaths = (async () => {
-  const allPosts = await getCollection("posts", (post) => !post.data.isDraft)
+  const allPosts = await getCollection('posts', (post) => !post.data.isDraft)
   return allPosts.map((post) => {
     return {
       params: {
@@ -28,7 +28,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 type Props = {
-  post: CollectionEntry<"posts">
+  post: CollectionEntry<'posts'>
 }
 
 const { post } = Astro.props
@@ -52,7 +52,14 @@ const { title, description, pubDate, image } = post.data
       </p>
     </div>
 
-    <Image inferSize src={image} alt={title} />
+    <Image
+      inferSize
+      src={image}
+      alt={title}
+      format="avif"
+      width={830}
+      height={450}
+    />
     <div
       id="content"
       class="prose md:prose-lg lg:prose-xl font-light text-white prose-headings:text-white tracking-wider
