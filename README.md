@@ -1,6 +1,7 @@
 # Portfolio Website
 
 A website to showcase my skills and share interesting stories.
+View it [live](https://kiiyurus.space)
 
 ## Tech Used
 
