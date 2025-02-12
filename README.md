@@ -13,11 +13,11 @@ A website to showcase my skills and share interesting stories.
 
 ## Roadmap
 
-- [] Add monitoring: powered by Sentry
-- [] Add web analytics: powered by Posthog
-- [] Add about page: to include profile photo, summary and work experience
-- [] Add more end to end tests
-- [] Convert to template: to be easily customized by other users
+[ ] Add monitoring: powered by Sentry
+[ ] Add web analytics: powered by Posthog
+[ ] Add about page: to include profile photo, summary and work experience
+[ ] Add more end to end tests
+[ ] Convert to template: to be easily customized by other users
 
 ## Installation
 
@@ -26,8 +26,8 @@ To get started with this project, follow these steps:
 1. **Clone the repository**:
 
    ```sh
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/skiiyuru/kiiyurus.space.git
+   cd kiiyurus.space
    ```
 
 2. **Install dependencies**:
