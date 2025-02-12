@@ -1,6 +1,6 @@
 ---
 import ButtonLink from '@/components/ui/ButtonLink.astro'
-import Heading from '@/components/ui/Heading.astro'
+import { EMAIL, RESUME_LINK } from '@/data/siteData'
 ---
 
 <section
@@ -24,16 +24,9 @@ import Heading from '@/components/ui/Heading.astro'
     id="buttons-container"
     class="grid grid-cols-1 gap-4 justify-items-center h-fit"
   >
-    <ButtonLink
-      href={'https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uilX70ZdjDVrm1HF4Qk0Ia2qZd9GyEPJRNMWz'}
-      target={'_blank'}
-    >
-      View resume
-    </ButtonLink>
-    <ButtonLink
-      href={'mailto:steveknganga@gmail.com'}
-      target={'_blank'}
-      variant="secondary">Reach out</ButtonLink
+    <ButtonLink href={RESUME_LINK} target={'_blank'}> View resume </ButtonLink>
+    <ButtonLink href={`mailto:${EMAIL}`} target={'_blank'} variant="secondary"
+      >Reach out</ButtonLink
     >
   </div>
 </section>
