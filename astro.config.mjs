@@ -1,26 +1,25 @@
-import sitemap from "@astrojs/sitemap"
-import tailwind from "@astrojs/tailwind"
-import icon from "astro-icon"
-import { defineConfig } from "astro/config"
+import sitemap from '@astrojs/sitemap'
+import icon from 'astro-icon'
+import { defineConfig } from 'astro/config'
 
-import react from "@astrojs/react"
+import react from '@astrojs/react'
 
-import glsl from "vite-plugin-glsl"
+import glsl from 'vite-plugin-glsl'
 
-import netlify from "@astrojs/netlify"
+import netlify from '@astrojs/netlify'
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://kiiyurus.space",
+  site: 'https://kiiyurus.space',
 
   prefetch: {
     prefetchAll: true,
   },
 
-  integrations: [tailwind(), icon(), sitemap(), react()],
+  integrations: [icon(), sitemap(), react()],
 
   image: {
-    remotePatterns: [{ protocol: "https" }],
+    remotePatterns: [{ protocol: 'https' }],
   },
 
   vite: {
@@ -28,5 +27,5 @@ export default defineConfig({
   },
 
   adapter: netlify(),
-  output: "server",
+  output: 'server',
 })
