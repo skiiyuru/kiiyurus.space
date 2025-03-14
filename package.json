@@ -17,6 +17,7 @@
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.4",
     "@fontsource-variable/big-shoulders-text": "^5.1.1",
+    "@fontsource-variable/kode-mono": "^5.2.5",
     "@fontsource-variable/pixelify-sans": "^5.0.2",
     "@react-three/drei": "^9.121.4",
     "@react-three/fiber": "^8.17.12",

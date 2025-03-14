@@ -14,11 +14,11 @@ export const socialData = [
     icon: 'linkedin',
     title: 'Linked In',
   },
-  {
-    href: 'https://twitter.com/snkiiyuru',
-    icon: 'twitter',
-    title: 'Twitter',
-  },
+  // {
+  //   href: 'https://twitter.com/snkiiyuru',
+  //   icon: 'twitter',
+  //   title: 'Twitter',
+  // },
   {
     href: '/rss.xml',
     icon: 'rss',

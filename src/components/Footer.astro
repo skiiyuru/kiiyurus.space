@@ -1,13 +1,13 @@
 ---
 // components
-import NavLink from "@/components/ui/NavLink.astro"
+import NavLink from '@/components/ui/NavLink.astro'
 
 // data
-import { socialData } from "@/data/siteData"
+import { socialData } from '@/data/siteData'
 ---
 
 <footer class="grid gap-4 py-10 text-center">
-  <ul class="flex gap-4 justify-center">
+  <!-- <ul class="flex gap-4 justify-center">
     {
       socialData.map((item) => (
         <NavLink
@@ -19,7 +19,7 @@ import { socialData } from "@/data/siteData"
         />
       ))
     }
-  </ul>
+  </ul> -->
   <p class="text-balance text-base">
     &copy; <span id="copyright">{new Date().getFullYear()}</span>
     Stephen Kiiyuru. All rights reserved.
@@ -27,6 +27,6 @@ import { socialData } from "@/data/siteData"
 </footer>
 
 <script>
-  const copyrightSpan = document.querySelector("#copyright") as HTMLSpanElement
+  const copyrightSpan = document.querySelector('#copyright') as HTMLSpanElement
   copyrightSpan.textContent = new Date().getFullYear().toString()
 </script>

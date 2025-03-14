@@ -1,7 +1,7 @@
 ---
-import { ClientRouter } from "astro:transitions"
+import { ClientRouter } from 'astro:transitions'
 
-import { baseData } from "@/data/siteData"
+import { baseData } from '@/data/siteData'
 
 type Props = {
   title?: string
@@ -25,6 +25,7 @@ const { title = baseData.title, description = baseData.description } =
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <meta name="description" content={description} />
+  <meta name="keywords" content="portfolio resume projects blog" />
   <title>{title}</title>
   <ClientRouter />
 </head>
