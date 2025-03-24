@@ -1,26 +1,11 @@
 ---
 // components
-import NavLink from '@/components/ui/NavLink.astro'
 
 // data
-import { socialData } from '@/data/siteData'
 ---
 
-<footer class="grid gap-4 py-10 text-center">
-  <!-- <ul class="flex gap-4 justify-center">
-    {
-      socialData.map((item) => (
-        <NavLink
-          href={item.href}
-          title={item.title}
-          icon={item.icon}
-          classes="size-6 lg:size-8"
-          target="_blank"
-        />
-      ))
-    }
-  </ul> -->
-  <p class="text-balance text-base">
+<footer class="py-4 text-center">
+  <p class="text-balance text-zinc-500 text-sm">
     &copy; <span id="copyright">{new Date().getFullYear()}</span>
     Stephen Kiiyuru. All rights reserved.
   </p>

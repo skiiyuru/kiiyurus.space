@@ -1,29 +1,27 @@
 ---
-export const prerender = true
-
 // tools
-import type { GetStaticPaths } from "astro"
-import { getCollection } from "astro:content"
-
-// layouts
-import BaseLayout from "@/layouts/BaseLayout.astro"
+import type { GetStaticPaths } from 'astro'
+import ButtonLink from '@/components/ui/ButtonLink.astro'
 
 // components
-import PostCard from "@/components/ui/PostCard.astro"
-import Container from "@/layouts/Container.astro"
-import Heading from "@/components/ui/Heading.astro"
-import ButtonLink from "@/components/ui/ButtonLink.astro"
+import PostCard from '@/components/ui/PostCard.astro'
+
+// layouts
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+
+export const prerender = true
 
 // data
 export const getStaticPaths = (async ({ paginate }) => {
-  const allPosts = await getCollection("posts", ({ data }) => !data.isDraft)
+  const allPosts = await getCollection('posts', ({ data }) => !data.isDraft)
   return paginate(
     allPosts.sort(
       (a, b) =>
-        new Date(b.data.pubDate).getUTCDate() -
-        new Date(a.data.pubDate).getUTCDate()
+        new Date(b.data.pubDate).getUTCDate()
+          - new Date(a.data.pubDate).getUTCDate(),
     ),
-    { pageSize: 3 }
+    { pageSize: 3 },
   )
 }) satisfies GetStaticPaths
 
@@ -33,7 +31,7 @@ const { page } = Astro.props
 <BaseLayout title=`Kiiyuru's Stories  | Page ${page.currentPage}`>
   <section class="py-10 bg-zinc-900 px-4">
     <div id="title-wrapper" class="grid gap-4 text-center">
-      <h2 class="text-4xl lg:text-5xl font-display tracking-wider text-pretty">
+      <h2 class="text-xl lg:text-3xl font-display text-pretty">
         Fancy a read?
       </h2>
       <p>
@@ -43,7 +41,7 @@ const { page } = Astro.props
     </div>
     <div id="cards-wrapper">
       {
-        page.data.map((post) => (
+        page.data.map(post => (
           <div id="card">
             <PostCard post={post} />
           </div>
@@ -54,7 +52,7 @@ const { page } = Astro.props
       {
         page.url.prev && (
           <ButtonLink href={page.url.prev} variant="badge">
-            {"<"}
+            {'<'}
           </ButtonLink>
         )
       }
@@ -64,7 +62,7 @@ const { page } = Astro.props
       {
         page.url.next && (
           <ButtonLink href={page.url.next} variant="badge">
-            {">"}
+            {'>'}
           </ButtonLink>
         )
       }
@@ -77,6 +75,7 @@ const { page } = Astro.props
     display: grid;
     grid-template-columns: 1fr;
     gap: 4rem;
+    grid-row: span 7;
   }
   #cards-wrapper {
     display: grid;

@@ -10,6 +10,10 @@ const links = [
     class: 'hover:animate-spin',
   },
   {
+    title: 'About',
+    href: '/about',
+  },
+  {
     title: 'Projects',
     href: '/projects',
   },
@@ -18,34 +22,38 @@ const links = [
     href: '/lab',
   },
   {
-    title: 'Stories',
+    title: 'Blog',
     href: '/blog',
   },
 ]
 ---
 
-<nav class="flex justify-center py-3">
-  <ul class="flex items-center gap-4">
-    {
-      links.map((item) => (
-        <NavLink
-          icon={item.icon}
-          href={item.href}
-          title={item.title}
-          classes={item?.class}
-        />
-      ))
-    }
-    {
-      socialData.map((item) => (
-        <NavLink
-          href={item.href}
-          title={item.title}
-          icon={item.icon}
-          classes="size-6 lg:size-8"
-          target="_blank"
-        />
-      ))
-    }
+<nav class="p-4">
+  <ul class="flex justify-between">
+    <div class="flex gap-x-6">
+      {
+        links.map(item => (
+          <NavLink
+            icon={item.icon}
+            href={item.href}
+            title={item.title}
+            classes={item?.class}
+          />
+        ))
+      }
+    </div>
+    <div class="flex gap-x-4">
+      {
+        socialData.map(item => (
+          <NavLink
+            href={item.href}
+            title={item.title}
+            icon={item.icon}
+            classes="size-6 lg:size-7"
+            target="_blank"
+          />
+        ))
+      }
+    </div>
   </ul>
 </nav>

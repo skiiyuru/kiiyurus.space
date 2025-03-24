@@ -1,27 +1,26 @@
+import type { Object3DNode } from '@react-three/fiber'
+import portalFS from '@/shaders/portal/fragment.glsl'
+import portalVS from '@/shaders/portal/vertex.glsl'
 import {
   Center,
   OrbitControls,
-  Sparkles,
   shaderMaterial,
+  Sparkles,
   useGLTF,
   useTexture,
-} from "@react-three/drei"
-import portalVS from "@/shaders/portal/vertex.glsl"
-import portalFS from "@/shaders/portal/fragment.glsl"
-import * as THREE from "three"
-import { extend, useFrame, type Object3DNode } from "@react-three/fiber"
-import { useRef } from "react"
+} from '@react-three/drei'
+import { extend, useFrame } from '@react-three/fiber'
+import { useRef } from 'react'
+import * as THREE from 'three'
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      portalMaterial: Object3DNode<THREE.ShaderMaterial, typeof PortalMaterial>
-    }
+declare module '@react-three/fiber' {
+  interface ThreeElements {
+    portalMaterial: Object3DNode<THREE.ShaderMaterial, typeof PortalMaterial>
   }
 }
 
-const BG_COLOUR = "#18181b"
-const PORTAL_COLOUR = "#A8DBEE"
+const BG_COLOUR = '#18181b'
+const PORTAL_COLOUR = '#A8DBEE'
 
 // custom portal shader
 const PortalMaterial = shaderMaterial(
@@ -31,15 +30,15 @@ const PortalMaterial = shaderMaterial(
     uColorEnd: new THREE.Color(PORTAL_COLOUR),
   },
   portalVS,
-  portalFS
+  portalFS,
 )
 
 // make our custom shader available as a tag in r3f
 extend({ PortalMaterial })
 
 export default function Experience() {
-  const { nodes } = useGLTF("./model/portal.glb")
-  const bakedTexture = useTexture("./model/baked.jpg")
+  const { nodes } = useGLTF('./model/portal.glb')
+  const bakedTexture = useTexture('./model/baked.jpg')
   bakedTexture.flipY = false
 
   const portalRef = useRef(null!)
@@ -51,7 +50,7 @@ export default function Experience() {
   return (
     <>
       {/* Background color */}
-      <color args={[BG_COLOUR]} attach={"background"} />
+      <color args={[BG_COLOUR]} attach="background" />
 
       <OrbitControls
         makeDefault
@@ -74,7 +73,7 @@ export default function Experience() {
           position={nodes.poleLightA.position}
           scale={[1.3, 1, 1]}
         >
-          <meshBasicMaterial color={"#E5582A"} />
+          <meshBasicMaterial color="#E5582A" />
         </mesh>
 
         <mesh
@@ -82,7 +81,7 @@ export default function Experience() {
           position={nodes.poleLightB.position}
           scale={[1.3, 1, 1]}
         >
-          <meshBasicMaterial color={"#E5582A"} />
+          <meshBasicMaterial color="#E5582A" />
         </mesh>
 
         <mesh

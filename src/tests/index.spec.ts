@@ -1,5 +1,5 @@
 import { RESUME_LINK } from '@/data/siteData'
-import { test, expect } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 // test('meta is correct', async ({ page }) => {
 //   await page.goto('/')
@@ -10,7 +10,6 @@ import { test, expect } from '@playwright/test'
 
 test('View Resume button should open the correct link', async ({
   page,
-  context,
 }) => {
   await page.goto('/')
 

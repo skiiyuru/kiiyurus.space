@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --font-display: 'Press Start 2P', system-ui;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --color-cream: '#FFFCE1';
+  --color-charcoal: '#0E100f';
+}
+
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #fffce1;
+  background-color: #0e100f;
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100%;
+}
+
+@media (min-width: 640px) {
+  main {
+    /* background-color: violet; */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, auto);
+  }
+}
+@media (min-width: 768px) {
+  main {
+    grid-template-rows: repeat(5, auto);
+  }
+}
+@media (min-width: 1024px) {
+  main {
+    /* border: 1px solid red; */
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(7, auto);
+  }
+}

@@ -1,5 +1,5 @@
-import { Canvas } from "@react-three/fiber"
-import PortalScene from "@/components/home/PortalScene"
+import PortalScene from '@/components/home/PortalScene'
+import { Canvas } from '@react-three/fiber'
 
 export default function Experience() {
   return (

@@ -38,34 +38,34 @@ Nginx has a number of files and folders that control its operations. By default 
 2. Created an app directory in `/var/www/`
 3. Created a file `server.js` and added the code below
 
-```jsx
-const http = require("http")
+```javascript
+const http = require('node:http')
 
 http
-  .createServer(function (req, res) {
-    res.write("On the way to being a fullstack engineer!")
+  .createServer((req, res) => {
+    res.write('On the way to being a fullstack engineer!')
     res.end()
   })
   .listen(3000)
 
-console.log("server started on port 3000")
+console.log('server started on port 3000')
 ```
 
 4. Created a virtual server in `etc/nginx/sites-enabled/kiiyurus.space` that will bridge the communication between the the node server and nginx server . Notice it uses the same IP as the node server
 
-```jsx
+```nginx
 server {
-listen 80 default_server;
-listen [::]:80 default_server;
+  listen 80 default_server;
+  listen [::]:80 default_server;
 
-root /var/www/html;
-index index.html;
+  root /var/www/html;
+  index index.html;
 
-server_name kiiyurus.space;
+  server_name kiiyurus.space;
 
-location / {
-    proxy_pass http://127.0.0.1:3000/;
-  }
+  location / {
+      proxy_pass http://127.0.0.1:3000/;
+    }
 }
 ```
 

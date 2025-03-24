@@ -1,31 +1,31 @@
 ---
-// astro tools
-import { getCollection } from "astro:content"
+// components
+import Badge from '@/components/ui/Badge.astro'
+
+import ProjectCard from '@/components/ui/ProjectCard.astro'
 
 // layouts
-import BaseLayout from "@/layouts/BaseLayout.astro"
-
-//components
-import Badge from "@/components/ui/Badge.astro"
-import ProjectCard from "@/components/ui/ProjectCard.astro"
-
+import BaseLayout from '@/layouts/BaseLayout.astro'
 // lib
-import getSearchParamAsArray from "@/lib/getSearchParamAsArray"
+import getSearchParamAsArray from '@/lib/getSearchParamAsArray'
+
+// astro tools
+import { getCollection } from 'astro:content'
 
 // collections
-let projects = await getCollection("projects")
+let projects = await getCollection('projects')
 projects = projects.sort(
-  (a, b) => Number(b.data.isFeatured) - Number(a.data.isFeatured)
+  (a, b) => Number(b.data.isFeatured) - Number(a.data.isFeatured),
 )
 
-const allTools = await getCollection("tools")
+const allTools = await getCollection('tools')
 
-const filters = getSearchParamAsArray(Astro.url, "tools")
+const filters = getSearchParamAsArray(Astro.url, 'tools')
 
 if (filters.length > 0) {
   projects = projects.filter((project) => {
-    const tools = project.data.icons.map((icon) => icon.id)
-    return filters.some((filter) => tools.includes(filter))
+    const tools = project.data.icons.map(icon => icon.id)
+    return filters.some(filter => tools.includes(filter))
   })
 }
 ---
@@ -34,13 +34,9 @@ if (filters.length > 0) {
   title="Kiiyuru's Projects"
   description="Here are some recent projects I've done"
 >
-  <section class="px-4 grid gap-14 bg-zinc-900 py-10">
+  <section class="px-4 grid gap-14 bg-zinc-900 py-10 border">
     <div id="title-wrapper">
-      <h2
-        class="text-4xl lg:text-5xl font-display tracking-wider
-      text-center
-      text-pretty"
-      >
+      <h2 class="text-xl lg:text-3xl font-display text-center text-pretty">
         Fancy a look?
       </h2>
       <p class="text-center mx-auto lg:w-1/2">
@@ -55,7 +51,7 @@ if (filters.length > 0) {
         <div class="flex gap-4 flex-wrap items-center">
           {
             filters.length > 0 && (
-              <Badge id="clear-all" pressed={true} aria-pressed={"true"}>
+              <Badge id="clear-all" pressed={true} aria-pressed="true">
                 Clear All
               </Badge>
             )
@@ -70,7 +66,7 @@ if (filters.length > 0) {
             return (
               <Badge
                 data-tool={id}
-                aria-pressed={isPressed ? "true" : "false"}
+                aria-pressed={isPressed ? 'true' : 'false'}
                 pressed={isPressed}
               >
                 {data.title}
@@ -84,7 +80,7 @@ if (filters.length > 0) {
     <div id="cards-wrapper" class="grid gap-6 items-center">
       {
         projects.map(({ data }) => (
-          <div id="card" class={`${data.isFeatured ? "featured" : ""}`}>
+          <div id="card" class={`${data.isFeatured ? 'featured' : ''}`}>
             <ProjectCard data={data} />
           </div>
         ))
@@ -94,43 +90,43 @@ if (filters.length > 0) {
 </BaseLayout>
 
 <script>
-  import getSearchParamAsArray from "@/lib/getSearchParamAsArray"
-  import setNewURLParams from "@/lib/setNewURLParams"
+import getSearchParamAsArray from '@/lib/getSearchParamAsArray'
+import setNewURLParams from '@/lib/setNewURLParams'
 
-  const filterButtons = document.querySelectorAll(
-    "[data-tool]"
-  ) as NodeListOf<HTMLButtonElement>
+const filterButtons = document.querySelectorAll(
+  '[data-tool]',
+) as NodeListOf<HTMLButtonElement>
 
-  const clearAllButton = document.querySelector("#clear-all")
+const clearAllButton = document.querySelector('#clear-all')
 
-  // clear filters
-  clearAllButton?.addEventListener("click", () => {
-    window.location.href = "projects"
-  })
+// clear filters
+clearAllButton?.addEventListener('click', () => {
+  window.location.href = 'projects'
+})
 
-  // update filters
-  filterButtons.forEach((button) =>
-    button.addEventListener("click", () => {
-      const isPressed = button.getAttribute("aria-pressed") === "true"
+// update filters
+filterButtons.forEach(button =>
+  button.addEventListener('click', () => {
+    const isPressed = button.getAttribute('aria-pressed') === 'true'
 
-      button.setAttribute("aria-pressed", isPressed ? "false" : "true")
+    button.setAttribute('aria-pressed', isPressed ? 'false' : 'true')
 
-      const currentUrl = new URL(window.location.href)
+    const currentUrl = new URL(window.location.href)
 
-      const existingParams = getSearchParamAsArray(currentUrl, "tools")
-      const newParams = isPressed
-        ? existingParams.filter((param) => param !== button.dataset.tool)
-        : ([...existingParams, button.dataset.tool] as string[])
+    const existingParams = getSearchParamAsArray(currentUrl, 'tools')
+    const newParams = isPressed
+      ? existingParams.filter(param => param !== button.dataset.tool)
+      : ([...existingParams, button.dataset.tool] as string[])
 
-      const newUrl = setNewURLParams({
-        url: currentUrl,
-        key: "tools",
-        valueArray: newParams,
-      })
-
-      window.location.assign(newUrl.toString())
+    const newUrl = setNewURLParams({
+      url: currentUrl,
+      key: 'tools',
+      valueArray: newParams,
     })
-  )
+
+    window.location.assign(newUrl.toString())
+  }),
+)
 </script>
 
 <style>
@@ -180,6 +176,7 @@ if (filters.length > 0) {
     section {
       grid-template-columns: subgrid;
       grid-column: span 6;
+      grid-row: span-7;
     }
 
     #title-wrapper {
