@@ -7,7 +7,7 @@ const links = [
     title: 'Home',
     href: '/',
     icon: 'memory-cube',
-    class: 'hover:animate-spin',
+    class: 'size-5 md:size-6 lg:size-8',
   },
   {
     title: 'About',
@@ -29,8 +29,8 @@ const links = [
 ---
 
 <nav class="p-4">
-  <ul class="flex justify-between">
-    <div class="flex gap-x-6">
+  <ul class="flex justify-between items-center">
+    <div class="flex gap-x-4 lg:gap-x-6">
       {
         links.map(item => (
           <NavLink
@@ -42,14 +42,14 @@ const links = [
         ))
       }
     </div>
-    <div class="flex gap-x-4">
+    <div class="flex gap-x-3 lg:gap-x-4 items-center">
       {
         socialData.map(item => (
           <NavLink
             href={item.href}
             title={item.title}
             icon={item.icon}
-            classes="size-6 lg:size-7"
+            classes="size-4 md:size-5 lg:size-6"
             target="_blank"
           />
         ))

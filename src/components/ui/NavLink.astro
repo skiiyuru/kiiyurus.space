@@ -19,9 +19,9 @@ const segment = extractSegmentURL(Astro.url.pathname)
 <li>
   <a
     class:list={[
-      'text-zinc-500 hover:text-cream',
+      'hover:text-cream',
       'font-semibold lg:text-lg',
-      (href === '/' && segment === '') || (href !== '/' && href.includes(segment)) ? 'text-cream' : '',
+      (href === '/' && segment === '') || (href !== '/' && href.includes(segment)) ? 'text-cream' : 'text-zinc-500',
     ]}
     href={href}
     aria-label={icon && title}
@@ -31,7 +31,7 @@ const segment = extractSegmentURL(Astro.url.pathname)
       icon
 ? (
     <Icon
-      class:list={['size-4 lg:size-7 ', classes]}
+      class:list={[classes]}
       name={icon}
       aria-hidden="true"
     />

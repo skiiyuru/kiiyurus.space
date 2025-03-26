@@ -10,28 +10,28 @@
 
 body {
   max-width: 1200px;
+  min-height: 100vh;
   margin: 0 auto;
   color: #fffce1;
   background-color: #0e100f;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-  min-height: 100%;
+  flex: 1;
+  display: grid;
+  min-height: 0;
 }
 
 @media (min-width: 640px) {
   main {
     /* background-color: violet; */
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(8, auto);
-  }
-}
-@media (min-width: 768px) {
-  main {
     grid-template-rows: repeat(5, auto);
   }
 }
+
 @media (min-width: 1024px) {
   main {
     /* border: 1px solid red; */
