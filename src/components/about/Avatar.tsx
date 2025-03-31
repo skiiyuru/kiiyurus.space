@@ -1,8 +1,9 @@
 import { useAnimations, useGLTF, useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
+import Fireworks from './Fireworks'
 
-const url = './model/avatar-3.glb'
+const url = './model/avatar-magic.glb'
 
 export default function Avatar() {
   const ref = useRef(null!)
@@ -10,31 +11,22 @@ export default function Avatar() {
   const scroll = useScroll()
 
   const { scene, animations } = useGLTF(url)
-  const { actions } = useAnimations(animations, scene)
+  const { actions } = useAnimations(animations, ref)
 
-  useFrame(() => {
-    ref.current.rotation.y = 0.5 + Math.PI * scroll.offset
-  })
-
-  useEffect(() => {
-    let action
-    if (ref.current) {
-      action = actions.idle
-      action.reset().fadeIn(0.1).play()
-    }
-
-    return () => {
-      action.fadeOut(0.5)
-    }
-  }, [actions.idle])
+  useEffect(() => void (actions.swing.reset().play().paused = true), [actions.swing])
+  useFrame(() => (actions.swing.time = actions.swing.getClip().duration * scroll.offset))
 
   return (
-    <primitive
-      ref={ref}
-      object={scene}
-      rotation-y={Math.PI}
-      position-y={-1.3}
-    />
+    <>
+      <primitive
+        ref={ref}
+        object={scene}
+        rotation-y={Math.PI * 0.19}
+        position={[-0.5, -1, 0]}
+      />
+
+      {ref.current && <Fireworks />}
+    </>
   )
 }
 
