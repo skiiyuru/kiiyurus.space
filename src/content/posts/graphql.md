@@ -2,8 +2,8 @@
 title: "GraphQL: Love at first site"
 description: GraphQL isn’t just another way to fetch data—it’s a paradigm shift in API design.
 pubDate: 2025-03-31
-image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uYhRDB6LEYTZ7sfj68qwlrdJBIL0MUoxikGm2
-isDraft: true
+image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8u3OcUHbEPDkeByTtHrVox72MwN9nh4RvQFZdl
+isDraft: false
 ---
 
 ## TL;DR
