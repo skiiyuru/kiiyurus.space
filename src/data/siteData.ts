@@ -1,6 +1,10 @@
 export const baseData = {
   title: "Kiiyuru's Space",
   description: `A software developer turning pixels into immersive playgrounds`,
+  image: {
+    src: '/profile.png',
+    alt: 'Imla website',
+  },
 }
 
 export const socialData = [

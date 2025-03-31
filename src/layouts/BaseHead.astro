@@ -2,13 +2,15 @@
 import { ClientRouter } from "astro:transitions"
 
 import { baseData } from "@/data/siteData"
+import { SEO } from 'astro-seo'
 
 type Props = {
   title?: string
   description?: string
+  image?: string
 }
 
-const { title = baseData.title, description = baseData.description } =
+const { title = baseData.title, description = baseData.description, image=baseData.image.src } =
   Astro.props
 ---
 
@@ -24,7 +26,21 @@ const { title = baseData.title, description = baseData.description } =
   />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
-  <meta name="description" content={description} />
-  <title>{title}</title>
+  <SEO
+  title={title}
+  description={description}
+  openGraph={{
+    basic: {
+      title,
+      type: 'website',
+      image: image,
+    },
+  }}
+  twitter={{
+    creator: '@snkiiyuru',
+  }}
+/>
+
+  
   <ClientRouter />
 </head>

@@ -36,9 +36,16 @@ const { post } = Astro.props
 const { Content } = await render(post)
 
 const { title, description, pubDate, image } = post.data
+
+// Get the full URL for the image
+const ogImage = new URL(image, Astro.site).href
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout 
+  title={title} 
+  description={description}
+  image={ogImage}
+>
   <section aria-label=`section on ${title}` class="bg-zinc-900 px-4 py-10">
     <div class="grid gap-4 text-center">
       <FormattedDate pubDate={pubDate} className="mx-auto" />
