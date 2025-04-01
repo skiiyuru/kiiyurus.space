@@ -4,8 +4,8 @@
 @theme {
   --font-display: 'Press Start 2P', system-ui;
   --font-mono: 'IBM Plex Mono', monospace;
-  --color-cream: '#FFFCE1';
-  --color-charcoal: '#0E100f';
+  --color-cream: #fffce1;
+  --color-charcoal: #0e100f;
 }
 
 body {

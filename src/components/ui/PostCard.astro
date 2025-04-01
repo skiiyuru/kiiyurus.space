@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import ButtonLink from '@/components/ui/ButtonLink.astro'
 import FormattedDate from '@/components/ui/FormattedDate.astro'
 import Heading from '@/components/ui/Heading.astro'
 import { Image } from 'astro:assets'
@@ -14,14 +13,15 @@ const { post } = Astro.props
 const { title, description, image, pubDate } = post.data
 ---
 
-<article aria-label={title} class="shadow-lg group">
-  <Image src={image} alt={title} width={830} height={450} format="avif" />
-  <div class="px-4 py-6 grid gap-4 border border-t-0">
-    <div class="grid gap-1">
-      <FormattedDate pubDate={pubDate} />
-      <Heading tagName="h3">{title}</Heading>
+<article aria-label={title} class="hover:scale-102 transition-all ease-in-out duration-300">
+  <a href={`/blog/${post.id}`}>
+    <Image src={image} alt={title} width={830} height={450} format="avif" />
+    <div class="px-4 py-6 grid gap-4 border border-t-0">
+      <div class="grid gap-1">
+        <FormattedDate pubDate={pubDate} />
+        <Heading tagName="h3">{title}</Heading>
+      </div>
+      <p>{description}</p>
     </div>
-    <p>{description}</p>
-    <ButtonLink href={`/blog/${post.id}`}>Read article</ButtonLink>
-  </div>
+  </a>
 </article>

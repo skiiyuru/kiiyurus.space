@@ -18,9 +18,12 @@ const { title, url, icons, thumbnail, isFeatured, description } = data
 const iconData = await getEntries(icons)
 ---
 
-<article aria-label={title} class=`${isFeatured ? 'featured' : ''}`>
+<article
+  aria-label={title}
+  class:list={[`${isFeatured ? 'featured' : ''}`, 'hover:scale-102 transition-all ease-in-out duration-300']}
+>
   <a href={url} target="_blank">
-    <Image src={thumbnail} alt={title} format="avif" width={830} height={450} />
+    <Image src={thumbnail} alt={title} format="avif" width={830} height={450} class="" />
     <div class="grid grid-cols-3 items-center p-4 border border-t-0 text-start">
       <h3 class="col-span-2 text-lg lg:text-2xl font-bold">
         {title}
