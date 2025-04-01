@@ -1,49 +1,57 @@
 ---
-title: "Hosting an Astro site in Digital Ocean: Part 1"
-description: "From Netlify newbie to self-hosting superhero: Join me on a wild ride as I ditch the training wheels and set up my Astro site on Digital Ocean!"
+title: "Into the Deep: Self-Hosting Your Astro Site"
+description: "A technical guide to migrating from managed hosting to a self-hosted Digital Ocean setup."
 pubDate: 2025-02-03
-image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uGGYeTEIsi8ZJcAXj1mhf6EtSI4kdGbxPuF0D
+image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8u9KE2x6sG0tEsFe9RMNwHOaQoAkXDLbiy7UVh
 isDraft: false
 ---
 
 ## Introduction
 
-Let me tell you about my love story with [Astro!](https://astro.build/) We've been going steady for a year now. I was hunting for the perfect framework for my portfolio site - you know, something that would let me play with React and ThreeJS while also managing a blog. Spoiler alert: Astro was 'the one'!"
+After a year of building with [Astro](https://astro.build/), I decided to transition from managed hosting solutions to a self-hosted setup. This series covers the migration process from Netlify to Digital Ocean, focusing on server configuration and deployment strategies.
 
-I decided to level up from the cozy nest of Netlify and Vercel to become a proper tech grown-up with my own server and swanky domain: kiiyurus.space. To help me adult properly, I dove into Jem Young's [course](https://frontendmasters.com/courses/fullstack-v3/) on Frontend Masters.". Side note: I highly recommend anyone stuck in tutorial hell and is looking for a way out to give Frontend Masters a try. Learning concepts from engineers who’ve been in the game for decades will set you on a path that is well informed by industry experts. These guys cut out the fluf and teach you the most important things to get you building according to industry standards. A special thanks to [Brian Holt, Jem Young, Scott Moss and Jen Kramer](https://frontendmasters.com/teachers/) for teaching so well.
+## Prerequisites
 
-Back to the discussion at hand, while taking Jem’s course, I discovered the steps I needed to take to achieve my big dreams:
+Before diving into the server setup, you'll need:
 
-1. Buy a domain name (I chose [Namecheap](https://www.namecheap.com/))
-2. Buy a virtual private server (I chose [Digital Ocean](https://www.digitalocean.com/))
-3. Register my domain to a Name Server (I chose Digital Ocean)
-4. Setup the web server
-5. Clone the astro site into the server
+1. A registered domain name (via [Namecheap](https://www.namecheap.com/) or similar)
+2. A Virtual Private Server (VPS) from [Digital Ocean](https://www.digitalocean.com/)
+3. Basic command line knowledge
+4. SSH access to your server
 
-This article will mainly focus on step 4.
+## Server Configuration
 
-## The server
+The core of our setup revolves around two key components: Nginx as our web server and Node.js for running the Astro application. Here's how to configure them:
 
-I purchased the entry level server offering going for about $4/month running ubuntu and was able to connect to it through SSH. But now the big question was: how will this machine know how to serve my astro site? In comes [NginX](https://www.f5.com/go/product/welcome-to-nginx). It is a web server that processes incoming requests to a server and determines what to do with them. So i did the following:
+### 1. Installing and Configuring Nginx
 
-1. Installed nginx: `sudo apt install nginx`
-2. Launched the nginx service: `sudo service nginx start`
-3. Tested it by entering my server’s IP address to the browser and I got this
+First, install and start Nginx:
 
-![Nginx welcome page](https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uf78FG1IrOTqpFo1QjXg5nImZbzJAHtedx0V2)
+```bash
+sudo apt install nginx
+sudo service nginx start
+```
 
-Nginx has a number of files and folders that control its operations. By default nginx is set up to serve a static html page. This is what we saw in the image above. But now we need it to somehow run our astro site instead. Nginx can also redirect requests to applications running in our server. One such application is a node application that runs JavaScript code on the server. I thus did the following (code modifications were done using Vim) :
+Verify the installation by accessing your server's IP address. You should see the default Nginx welcome page.
 
-1. Installed node using these official steps from [Node](https://github.com/nodesource/distributions?tab=readme-ov-file#debian-and-ubuntu-based-distributions)
-2. Created an app directory in `/var/www/`
-3. Created a file `server.js` and added the code below
+### 2. Setting Up Node.js
+
+Install Node.js using the official distribution:
+
+```bash
+# Follow Node.js official installation steps
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+Create a test application to verify the setup:
 
 ```javascript
 const http = require('node:http')
 
 http
   .createServer((req, res) => {
-    res.write('On the way to being a fullstack engineer!')
+    res.write('Node.js server running')
     res.end()
   })
   .listen(3000)
@@ -51,7 +59,9 @@ http
 console.log('server started on port 3000')
 ```
 
-4. Created a virtual server in `etc/nginx/sites-enabled/kiiyurus.space` that will bridge the communication between the the node server and nginx server . Notice it uses the same IP as the node server
+### 3. Configuring Nginx as a Reverse Proxy
+
+Create a virtual server configuration in `/etc/nginx/sites-enabled/kiiyurus.space`:
 
 ```nginx
 server {
@@ -65,27 +75,39 @@ server {
 
   location / {
       proxy_pass http://127.0.0.1:3000/;
-    }
+  }
 }
 ```
 
-5. Added the virtual server to nginx configuration`/etc/nginx/nginx.conf`
+Update the Nginx configuration in `/etc/nginx/nginx.conf`:
 
-```bash
-    ##
-    # Virtual Host Configs
-    ##
+```nginx
+##
+# Virtual Host Configs
+##
 
-    include /etc/nginx/conf.d/*.conf;
-    include /etc/nginx/sites-enabled/kiiyurus-space;
-
+include /etc/nginx/conf.d/*.conf;
+include /etc/nginx/sites-enabled/kiiyurus-space;
 ```
 
-6. Checked that nginx was still okay: `sudo nginx -t`
-7. Restarted nginx: `sudo service nginx restart`
-8. Started the node app: `node server.js`
-9. Tested it by entering my server’s IP address to the browser and got this
+### 4. Deploying the Configuration
 
-![Node server](https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uPkxWcRbYD9N05itq8hZpv341cEdzHGOob6TL)
+Apply the changes with these commands:
 
-Hurray! Nginx was now serving the node app instead of the default web page. Now all we had to do is replace the node app with my astro project. And that’s what I’ll cover in part 2 of this story. Keep your eyes peeled for that one!
+```bash
+sudo nginx -t          # Test configuration
+sudo service nginx restart
+node server.js         # Start the Node application
+```
+
+At this point, accessing your server's IP address should display the Node.js test message instead of the default Nginx page.
+
+## Next Steps
+
+Part 2 of this series will cover:
+- Deploying the Astro application
+- Setting up PM2 for process management
+- Configuring SSL certificates
+- Implementing automatic deployments
+
+The foundation we've built here provides a robust base for hosting not just Astro sites, but any Node.js application.

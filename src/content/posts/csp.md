@@ -1,8 +1,8 @@
 ---
 title: "Content Security Policy: The Security Guard Your Website Needs"
 description: Content Security Policy isn't just another header—it's your first line of defense against malicious code injection.
-pubDate: 2025-04-05
-image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8u3OcUHbEPDkeByTtHrVox72MwN9nh4RvQFZdl
+pubDate: 2025-03-15
+image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uATTToOmEjR9XO53NKMTplmWFbszUdc0Ywg84
 isDraft: true
 ---
 

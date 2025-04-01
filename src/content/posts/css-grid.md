@@ -1,8 +1,8 @@
 ---
 title: Laying out the Web using CSS Grid
-description: Learn how to get started with CSS Grid using these few handy tips.
+description: Master modern web layouts by understanding when to use Grid vs Flexbox.
 pubDate: 2025-01-15
-image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uYhRDB6LEYTZ7sfj68qwlrdJBIL0MUoxikGm2
+image: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8urQu41tvmHuSBbXLd8wpoD9i7PVsTcfqMlyG3
 isDraft: false
 ---
 

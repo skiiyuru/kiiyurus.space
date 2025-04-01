@@ -17,9 +17,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const allPosts = await getCollection('posts', ({ data }) => !data.isDraft)
   return paginate(
     allPosts.sort(
-      (a, b) =>
-        new Date(b.data.pubDate).getUTCDate()
-          - new Date(a.data.pubDate).getUTCDate(),
+      (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
     ),
     { pageSize: 3 },
   )
