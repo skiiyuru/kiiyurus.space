@@ -42,5 +42,10 @@ const { title = baseData.title, description = baseData.description, image=baseDa
   }}
 />
   <Posthog />
+  <meta http-equiv="Content-Security-Policy" content="      
+    default-src 'self';       
+    script-src 'self' https://*.posthog.com;       
+    connect-src 'self' https://*.posthog.com;    
+  ">
   <ClientRouter />
 </head>
