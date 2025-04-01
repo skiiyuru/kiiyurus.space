@@ -4,9 +4,7 @@ export const prerender = true
 import { render } from 'astro:content'
 
 import FormattedDate from '@/components/ui/FormattedDate.astro'
-import Heading from '@/components/ui/Heading.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import Container from '@/layouts/Container.astro'
 import { Image } from 'astro:assets'
 import { getCollection } from 'astro:content'
 
@@ -72,7 +70,13 @@ const ogImage = new URL(image, Astro.site).href
       class="prose md:prose-lg lg:prose-xl font-light text-white prose-headings:text-white tracking-wider
       prose-code:text-red-400 prose-a:text-sky-400
       prose-a:no-underline prose-h2:text-pretty prose-h3:text-pretty prose-h4:text-pretty
-      prose-h2:font-bold prose-h3:font-bold prose-h4:font-bold"
+      prose-h2:font-bold prose-h3:font-bold prose-h4:font-bold
+      prose-strong:text-white prose-ol:text-white prose-ul:text-white
+      prose-p:my-4 prose-headings:my-6
+      prose-h2:mt-8 prose-h2:mb-4
+      prose-h3:mt-6 prose-h3:mb-3
+      prose-h4:mt-6 prose-h4:mb-3
+      "
     >
       <Content />
     </div>
