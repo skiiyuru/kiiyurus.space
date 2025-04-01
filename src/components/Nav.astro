@@ -1,37 +1,59 @@
 ---
-import NavLink from "@/components/ui/NavLink.astro"
+import NavLink from '@/components/ui/NavLink.astro'
+import { socialData } from '@/data/siteData'
 
-const navData = [
+const links = [
   {
-    title: "Projects",
-    href: "/projects",
-    class: "",
+    title: 'Home',
+    href: '/',
+    icon: 'memory-cube',
+    class: 'size-5 md:size-6 lg:size-8',
   },
   {
-    title: "Home",
-    href: "/",
-    icon: "memory-cube",
-    class: "hover:animate-spin",
+    title: 'About',
+    href: '/about',
   },
   {
-    title: "Stories",
-    href: "/blog",
-    class: "",
+    title: 'Projects',
+    href: '/projects',
+  },
+  {
+    title: 'Lab',
+    href: '/lab',
+  },
+  {
+    title: 'Blog',
+    href: '/blog',
   },
 ]
 ---
 
-<nav class="flex justify-center py-3">
-  <ul class="flex items-center gap-4">
-    {
-      navData.map((item) => (
-        <NavLink
-          icon={item.icon}
-          href={item.href}
-          title={item.title}
-          classes={item.class}
-        />
-      ))
-    }
+<nav class="p-4">
+  <ul class="flex justify-between items-center">
+    <div class="flex gap-x-4 lg:gap-x-6">
+      {
+        links.map(item => (
+          <NavLink
+            icon={item.icon}
+            href={item.href}
+            title={item.title}
+            classes={item?.class}
+          />
+        ))
+      }
+    </div>
+    <div class="flex gap-x-3 lg:gap-x-4 items-center">
+      {
+        socialData.map(item => (
+          <NavLink
+            href={item.href}
+            title={item.title}
+            icon={item.icon}
+            classes="size-4 md:size-5 lg:size-6"
+            target="_blank"
+          />
+        ))
+      }
+    </div>
   </ul>
 </nav>

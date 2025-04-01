@@ -14,9 +14,7 @@ import { EMAIL, RESUME_LINK } from '@/data/siteData'
       height={192}
       class="text-white"
     /> -->
-  <h2 class="text-4xl lg:text-5xl font-display tracking-wider text-pretty">
-    Hi, I'm Kiiyuru
-  </h2>
+  <h2 class="text-xl lg:text-2xl font-display text-pretty">Hi,I'm Kiiyuru</h2>
   <p class="text-center text-pretty mx-auto">
     A software engineer turning pixels into immersive playgrounds.
   </p>
@@ -24,9 +22,12 @@ import { EMAIL, RESUME_LINK } from '@/data/siteData'
     id="buttons-container"
     class="grid grid-cols-1 gap-4 justify-items-center h-fit"
   >
-    <ButtonLink href={RESUME_LINK} target={'_blank'}> View resume </ButtonLink>
-    <ButtonLink href={`mailto:${EMAIL}`} target={'_blank'} variant="secondary"
-      >Reach out</ButtonLink
+    <ButtonLink href={RESUME_LINK} target="_blank"> View resume </ButtonLink>
+    <ButtonLink
+      href={`mailto:${EMAIL}`}
+      target="_blank"
+      variant="secondary"
+    >Reach out</ButtonLink
     >
   </div>
 </section>

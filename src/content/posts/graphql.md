@@ -25,9 +25,11 @@ query {
     }
   }
 }
+
 ```
 
 Response:
+
 ```json
 {
   "data": {
@@ -62,6 +64,7 @@ type Post {
   title: String!
   content: String!
 }
+
 ```
 
 This snippet shows a basic schema defining `User` and `Post` types. It's like a blueprint that both the frontend and backend teams can rely on.
@@ -75,16 +78,16 @@ const resolvers = {
   Query: {
     user: (parent, args, context, info) => {
       // Fetch user data from database based on args.id
-      return database.findUserById(args.id);
+      return database.findUserById(args.id)
     },
   },
   User: {
     posts: (parent, args, context, info) => {
       // Fetch posts for the current user (parent)
-      return database.findPostsByUserId(parent.id);
+      return database.findPostsByUserId(parent.id)
     },
   },
-};
+}
 ```
 
 This snippet illustrates how resolvers link the user and posts fields to data retrieval functions. It's where the magic happens!
@@ -101,6 +104,7 @@ mutation CreatePost($title: String!, $content: String!, $userId: ID!) {
     content
   }
 }
+
 ```
 
 This mutation creates a new post and returns the created post's id, title, and content. It's a clear and concise way to handle data modifications.
@@ -120,9 +124,3 @@ I'm incredibly excited about the potential of GraphQL. It's transformed how I th
 A BIG thanks to [Scott Moss](https://github.com/Hendrixer) for making an incredible course on GraphQL. You can find it on [FrontEnd Masters](https://frontendmasters.com/courses/server-graphql-nextjs/)
 
 Checkout [this repo](https://github.com/skiiyuru/server-side-gql) where I integrate GraphQL in an issue tracking web app.
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-import type { CollectionEntry } from "astro:content"
+import type { CollectionEntry } from 'astro:content'
 
 export default function getSearchParamAsArray(url: URL, key: string) {
   const params = url.searchParams.get(key)
@@ -7,5 +7,5 @@ export default function getSearchParamAsArray(url: URL, key: string) {
     return []
   }
 
-  return params.split(",") as CollectionEntry<"tools">["id"][]
+  return params.split(',') as CollectionEntry<'tools'>['id'][]
 }

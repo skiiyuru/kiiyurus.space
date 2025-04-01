@@ -1,9 +1,9 @@
 ---
 const styles = {
-  h1: "text-5xl lg:text-6xl font-display",
-  h2: "text-4xl lg:text-5xl font-display",
-  h3: "text-2xl lg:text-4xl font-bold ",
-  h4: "text-2xl lg:text-3xl font-bold",
+  h1: 'text-3xl lg:text-4xl font-display',
+  h2: 'text-2xl lg:text-3xl font-display',
+  h3: 'text-xl lg:text-2xl font-bold ',
+  h4: 'text-lg lg:text-xl font-bold',
 }
 
 type Props = {
@@ -19,7 +19,7 @@ const Tag = tagName
 
 <Tag
   id={id}
-  class:list={["text-pretty tracking-wider", styles[tagName], classes]}
+  class:list={['text-pretty tracking-wider', styles[tagName], classes]}
 >
   <slot />
 </Tag>

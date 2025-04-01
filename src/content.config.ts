@@ -11,7 +11,7 @@ const tools = defineCollection({
 
 const projects = defineCollection({
   loader: glob({ pattern: '**/[^_]*.yaml', base: './src/content/projects' }),
-  schema: ({ image }) =>
+  schema: () =>
     z.object({
       title: z.string(),
       description: z.string().optional(),
@@ -24,7 +24,7 @@ const projects = defineCollection({
 
 const posts = defineCollection({
   loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/posts' }),
-  schema: ({ image }) =>
+  schema: () =>
     z.object({
       title: z.string().max(65, {
         message: 'Title cannot be longer than 65 characters',

@@ -15,7 +15,7 @@ export default function setNewURLParams({
     return url
   }
 
-  params.set(key, valueArray.join(","))
+  params.set(key, valueArray.join(','))
   url.search = params.toString()
   return url
 }

@@ -1,7 +1,7 @@
 title: My Stadium
 description: A football-themed portfolio featuring the Red Devil mascot of Manchester United.
 thumbnail: https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uq0f2yQgDfrnTBivVgb2hFwzPmocX3SMCIujq
-url: "https://skiiyuru.vercel.app/"
+url: 'https://skiiyuru.vercel.app/'
 isFeatured: true
 icons:
   - react

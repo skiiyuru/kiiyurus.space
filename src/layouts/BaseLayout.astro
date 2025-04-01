@@ -1,50 +1,22 @@
 ---
-// css & fonts
+import Footer from '@/components/Footer.astro'
+// Components
+import Nav from '@/components/Nav.astro'
+import BaseHead from './BaseHead.astro'
 
-import "@fontsource-variable/pixelify-sans"
-
-// Supports weights 100-900
-import "@fontsource-variable/big-shoulders-text"
-
-// components
-import Nav from "@/components/Nav.astro"
-import BaseHead from "./BaseHead.astro"
-import Footer from "@/components/Footer.astro"
+// CSS & Fonts
+import '../styles/global.css'
+import '@fontsource/press-start-2p'
+import '@fontsource/ibm-plex-mono'
 ---
 
 <html lang="en">
   <BaseHead {...Astro.props} />
-  <body class="text-white text-xl font-normal bg-zinc-950 tracking-wide">
+  <body class="font-mono antialiased">
     <Nav />
-    <main class="p-3 grid gap-3">
+    <main class="px-3 grid gap-3">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
-
-<style>
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  @media (min-width: 640px) {
-    main {
-      /* background-color: violet; */
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(8, auto);
-    }
-  }
-  @media (min-width: 768px) {
-    main {
-      grid-template-rows: repeat(5, auto);
-    }
-  }
-  @media (min-width: 1024px) {
-    main {
-      /* border: 1px solid red; */
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(7, auto);
-    }
-  }
-</style>

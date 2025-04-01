@@ -1,25 +1,25 @@
 ---
-export const prerender = true
+import type { GetStaticPaths } from 'astro'
 
-import { render } from 'astro:content'
-
+import type { CollectionEntry } from 'astro:content'
 import FormattedDate from '@/components/ui/FormattedDate.astro'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { Image } from 'astro:assets'
-import { getCollection } from 'astro:content'
 
-import type { GetStaticPaths } from 'astro'
-import type { CollectionEntry } from 'astro:content'
+import { getCollection, render } from 'astro:content'
+
+
+export const prerender = true
 
 export const getStaticPaths = (async () => {
-  const allPosts = await getCollection('posts', (post) => !post.data.isDraft)
+  const allPosts = await getCollection('posts', post => !post.data.isDraft)
   return allPosts.map((post) => {
     return {
       params: {
         id: post.id,
       },
       props: {
-        post: post,
+        post,
       },
     }
   })
@@ -39,17 +39,15 @@ const { title, description, pubDate, image } = post.data
 const ogImage = new URL(image, Astro.site).href
 ---
 
-<BaseLayout 
-  title={title} 
+<BaseLayout
+  title={title}
   description={description}
   image={ogImage}
 >
   <section aria-label=`section on ${title}` class="bg-zinc-900 px-4 py-10">
     <div class="grid gap-4 text-center">
       <FormattedDate pubDate={pubDate} className="mx-auto" />
-      <h2
-        class="text-4xl lg:text-5xl font-sans font-bold tracking-wider text-balance"
-      >
+      <h2 class="text-xl lg:text-3xl font-display text-balance">
         {title}
       </h2>
       <p class="text-center text-balance">
@@ -67,7 +65,7 @@ const ogImage = new URL(image, Astro.site).href
     />
     <div
       id="content"
-      class="prose md:prose-lg lg:prose-xl font-light text-white prose-headings:text-white tracking-wider
+      class="prose text-white prose-headings:text-white
       prose-code:text-red-400 prose-a:text-sky-400
       prose-a:no-underline prose-h2:text-pretty prose-h3:text-pretty prose-h4:text-pretty
       prose-h2:font-bold prose-h3:font-bold prose-h4:font-bold
@@ -88,6 +86,7 @@ const ogImage = new URL(image, Astro.site).href
     display: grid;
     grid-template-columns: 1fr;
     gap: 4rem;
+    grid-row: span 7;
   }
 
   #content {

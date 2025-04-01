@@ -21,6 +21,7 @@ Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remot
 This was my introduction to the world of Content Security Policy. The browser was doing its job—blocking potentially dangerous scripts from unknown sources. Even though analytics might work without CSP, implementing one helps protect your users by explicitly declaring which sources are trusted.
 
 ### Important Note
+
 While analytics tools like PostHog can work without CSP, implementing one is considered a security best practice. CSP provides an additional layer of protection against XSS attacks and other security vulnerabilities. Think of it as wearing a seatbelt - you might drive safely without one, but it's an important safety measure you shouldn't skip.
 
 ### 1. The Security Guard Metaphor
@@ -28,11 +29,15 @@ While analytics tools like PostHog can work without CSP, implementing one is con
 Think of CSP as a bouncer at an exclusive club. By default, they don't let anyone in unless they're on the list. In web terms, this looks like:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="
+<meta
+  http-equiv="Content-Security-Policy"
+  content="
     default-src 'self';
     script-src 'self';
     style-src 'self';
-">
+"
+/>
+
 ```
 
 This policy says "only trust content from our own domain." Pretty secure, but perhaps too restrictive for modern web apps.
@@ -42,16 +47,21 @@ This policy says "only trust content from our own domain." Pretty secure, but pe
 To allow PostHog while maintaining security, we needed to explicitly whitelist their domains:
 
 ```html
-<meta http-equiv="Content-Security-Policy" content="
+<meta
+  http-equiv="Content-Security-Policy"
+  content="
     default-src 'self';
     script-src 'self' 'unsafe-inline' https://*.posthog.com https://us-assets.i.posthog.com;
     connect-src 'self' https://*.posthog.com https://us.i.posthog.com;
     img-src 'self' data: https: http:;
     style-src 'self' 'unsafe-inline';
-">
+"
+/>
+
 ```
 
 Each directive serves a specific purpose:
+
 - `script-src`: Controls which JavaScript can run
 - `connect-src`: Manages API connections
 - `img-src`: Determines which images can load
@@ -62,14 +72,9 @@ Each directive serves a specific purpose:
 CSP's real strength lies in its granular control. Here are some common directives and their uses:
 
 ```html
-// Allow Google Fonts
-font-src 'self' https://fonts.gstatic.com;
+// Allow Google Fonts font-src 'self' https://fonts.gstatic.com; // Allow image CDN img-src 'self'
+https://images.mycdn.com; // Allow API endpoints connect-src 'self' https://api.myservice.com;
 
-// Allow image CDN
-img-src 'self' https://images.mycdn.com;
-
-// Allow API endpoints
-connect-src 'self' https://api.myservice.com;
 ```
 
 ### 4. Development vs Production
@@ -78,20 +83,28 @@ During development, you might need a more permissive policy. But in production, 
 
 ```html
 <!-- Development -->
-<meta http-equiv="Content-Security-Policy" content="
+<meta
+  http-equiv="Content-Security-Policy"
+  content="
     default-src 'self' 'unsafe-inline' 'unsafe-eval';
-">
+"
+/>
 
 <!-- Production -->
-<meta http-equiv="Content-Security-Policy" content="
+<meta
+  http-equiv="Content-Security-Policy"
+  content="
     default-src 'self';
     script-src 'self' https://trusted-scripts.com;
-">
+"
+/>
+
 ```
 
 ## Tools of the Trade
 
 To help debug CSP issues, these tools are invaluable:
+
 - Browser DevTools (check the Console for CSP violations)
 - [CSP Evaluator](https://csp-evaluator.withgoogle.com/)
 - [Report-URI](https://report-uri.com/) for monitoring CSP violations
@@ -119,5 +132,3 @@ Remember: security and functionality don't have to be at odds. With proper CSP c
 - [MDN Web Docs on CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
 - [Content Security Policy Reference](https://content-security-policy.com/)
 - [Google's CSP Guide](https://developers.google.com/web/fundamentals/security/csp)
-
-

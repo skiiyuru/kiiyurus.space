@@ -1,8 +1,8 @@
 ---
-import { Icon } from "astro-icon/components"
-import type { HTMLAttributes } from "astro/types"
+import type { HTMLAttributes } from 'astro/types'
+import { Icon } from 'astro-icon/components'
 
-type Props = HTMLAttributes<"button"> & {
+type Props = HTMLAttributes<'button'> & {
   pressed?: boolean
 }
 
@@ -12,8 +12,9 @@ const { pressed, ...otherProps } = Astro.props
 <button
   aria-label="Remove"
   class:list={[
-    "relative inline-block border-2 border-white px-2 py-1 text-base font-medium hover:border-zinc-500 hover:text-zinc-500",
-    pressed && "bg-white text-zinc-950 tracking-wider",
+    'relative inline-block border-2  px-2 py-1 font-medium hover:cursor-pointer transition-all ease-in-out duration-300',
+    'hover:border-cream hover:text-cream',
+    pressed ? 'border-cream text-cream hover:border-zinc-500/50 hover:text-zinc-500/50' : 'border-zinc-500 text-zinc-500',
   ]}
   {...otherProps}
 >
@@ -23,7 +24,9 @@ const { pressed, ...otherProps } = Astro.props
       <Icon
         name="close"
         aria-hidden="true"
-        class="size-5 bg-white text-zinc-950 border border-zinc-950 absolute top-0 right-0 inline-flex items-center justify-center p-1 text-sm transform translate-x-1/2 -translate-y-1/2"
+        class={`size-5 bg-cream text-charcoal border border-charcoal absolute 
+        top-0 right-0 inline-flex items-center justify-center p-1 text-sm transform 
+        translate-x-1/2 -translate-y-1/2`}
       />
     )
   }
