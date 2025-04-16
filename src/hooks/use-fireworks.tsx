@@ -1,7 +1,6 @@
 import fragment_shader from '@/shaders/firework/fragment.glsl'
 import vertex_shader from '@/shaders/firework/vertex.glsl'
-import { useScroll } from '@react-three/drei'
-import { useFrame, useLoader, useThree } from '@react-three/fiber'
+import { useLoader, useThree } from '@react-three/fiber'
 import gsap from 'gsap'
 import * as THREE from 'three'
 
@@ -14,7 +13,7 @@ export type CreateFireWork = (
   color: THREE.Color
 ) => void
 
-export default function Fireworks() {
+export default function useFireworks() {
   // Get the size of the canvas so that we can resize the points
   const {
     scene,
@@ -131,20 +130,5 @@ export default function Fireworks() {
     createFirework(count, position, size, texture, radius, color)
   }
 
-  const scroll = useScroll()
-
-  useFrame(() => {
-    console.warn('🚀 ~ useFrame ~ scroll:', scroll)
-    if (scroll.offset > 0.5) {
-      createRandomFirework()
-    }
-  })
-
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     createRandomFirework()
-  //   }, 3000)
-  // }, [])
-
-  return null
+  return createRandomFirework
 }

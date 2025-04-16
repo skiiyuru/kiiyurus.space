@@ -1,6 +1,7 @@
 import { Environment, ScrollControls } from '@react-three/drei'
 import { Suspense } from 'react'
 import Avatar from './Avatar'
+import ContentManager from './content-manager'
 
 export default function Scene() {
   return (
@@ -8,8 +9,9 @@ export default function Scene() {
       {/* <Perf /> */}
 
       <Suspense fallback={null}>
-        <ScrollControls damping={0.1} maxSpeed={0.5} pages={2}>
+        <ScrollControls damping={0.2} maxSpeed={0.5} pages={2}>
           <Avatar />
+          <ContentManager />
         </ScrollControls>
       </Suspense>
 

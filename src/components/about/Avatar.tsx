@@ -1,7 +1,6 @@
 import { useAnimations, useGLTF, useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
-import Fireworks from './Fireworks'
 
 const url = './model/avatar-magic.glb'
 
@@ -25,7 +24,6 @@ export default function Avatar() {
         position={[-0.5, -1, 0]}
       />
 
-      {ref.current && <Fireworks />}
     </>
   )
 }
