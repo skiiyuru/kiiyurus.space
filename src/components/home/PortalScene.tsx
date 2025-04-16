@@ -1,4 +1,4 @@
-import type { Object3DNode } from '@react-three/fiber'
+import type { ThreeElement } from '@react-three/fiber'
 import portalFS from '@/shaders/portal/fragment.glsl'
 import portalVS from '@/shaders/portal/vertex.glsl'
 import {
@@ -12,12 +12,6 @@ import {
 import { extend, useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 import * as THREE from 'three'
-
-declare module '@react-three/fiber' {
-  interface ThreeElements {
-    portalMaterial: Object3DNode<THREE.ShaderMaterial, typeof PortalMaterial>
-  }
-}
 
 const BG_COLOUR = '#18181b'
 const PORTAL_COLOUR = '#A8DBEE'
@@ -35,6 +29,12 @@ const PortalMaterial = shaderMaterial(
 
 // make our custom shader available as a tag in r3f
 extend({ PortalMaterial })
+
+declare module '@react-three/fiber' {
+  interface ThreeElements {
+    portalMaterial: ThreeElement<typeof PortalMaterial>
+  }
+}
 
 export default function Experience() {
   const { nodes } = useGLTF('./model/portal.glb')
