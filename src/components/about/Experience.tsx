@@ -6,7 +6,9 @@ export default function Experience() {
   return (
     <>
       <Canvas
-        className="bg-zinc-900 col-span-6 row-span-8"
+        className="h-screen overflow-hidden bg-zinc-900
+        sm:grid-rows-subgrid sm:grid-cols-subgrid sm:col-span-2 sm:row-span-8
+        lg:col-span-6 lg:row-span-8"
         camera={{
           fov: 50,
           near: 0.1,

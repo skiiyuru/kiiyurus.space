@@ -21,7 +21,7 @@ export default function Avatar() {
         ref={ref}
         object={scene}
         rotation-y={Math.PI * 0.19}
-        position={[-0.5, -1, 0]}
+        position={[-0.7, -1, 0]}
       />
 
     </>

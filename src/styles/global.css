@@ -2,7 +2,8 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  --font-display: 'Press Start 2P', system-ui;
+  /* --font-display: 'Press Start 2P', system-ui; */
+  --font-display: 'Fusion Pixel 12px Monospaced SC', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
   --color-cream: #fffce1;
   --color-charcoal: #0e100f;
