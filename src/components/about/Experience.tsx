@@ -1,8 +1,13 @@
+import type { AboutSectionsProps } from '@/lib/types'
+import { AboutContext } from '@/store/about-context'
 import { Loader } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
+import { useMemo } from 'react'
 import Scene from './Scene'
 
-export default function Experience() {
+export default function Experience({ sections, tools }: AboutSectionsProps) {
+  const state = useMemo(() => ({ sections, tools }), [sections, tools])
+
   return (
     <>
       <Canvas
@@ -22,7 +27,9 @@ export default function Experience() {
       //   depth: false,
       // }}
       >
-        <Scene />
+        <AboutContext value={state}>
+          <Scene />
+        </AboutContext>
       </Canvas>
       <Loader />
     </>

@@ -1,47 +1,38 @@
-import type { AboutSection } from '@/lib/types'
+import type { AboutSection, Tools } from '@/lib/types'
 import useFireworks from '@/hooks/use-fireworks'
 import { Text, useScroll } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { Box, Flex } from '@react-three/flex'
 import { useRef } from 'react'
-import * as THREE from 'three'
 import Wambui from './wambui'
 
 interface Props {
   content: AboutSection
+  tools: Tools
   position: [number, number, number]
 }
 
 const descriptionProps = {
   font: '/fonts/ibm-plex-mono-400.woff',
-  fontSize: 0.045,
+  color: 0xFFFCE1,
 }
 const titleProps = {
   font: '/fonts/fusion-pixel.woff',
-  fontSize: 0.3,
+  color: 0xFFFCE1,
 }
 
-export default function Content({ content, position }: Props) {
-  const visible = useRef(false)
+export default function Content({ content, position, tools }: Props) {
   const createRandomFirework = useFireworks()
   const scroll = useScroll()
+  const [{ width }, { width: pixelWidth }] = useThree(state => [state.viewport, state.size])
+
   const lastScrollOffset = useRef(0)
+  const scale = Math.min(1, width / 16)
+  const descriptionSize = Math.max(scale * 0.3, 0.027)
+  const titleSize = scale * 2
 
-  const ref = useRef(null!)
-  const [viewport] = useThree(state => [state.viewport])
-
-  useFrame((_, delta) => {
-    ref.current.position.y = THREE.MathUtils.damp(
-      ref.current.position.y,
-      visible.current ? 0 : -viewport.height / 2 + 1,
-      4,
-      delta,
-    )
-
-    // Get current scroll progress (0 to 1)
+  useFrame(() => {
     const scrollOffset = scroll.offset
-
-    // Detect when crossing the threshold between pages
     if (content.slug === 'skills' && scrollOffset < 0.5 && lastScrollOffset.current >= 0.5) {
       createRandomFirework()
     }
@@ -53,32 +44,29 @@ export default function Content({ content, position }: Props) {
   })
 
   return (
-    <group
-      position={position}
-      // rotation={[-0.25, -0.25, 0]}
-    >
-      <group ref={ref}>
-        <Flex dir="column">
+    <group position={position}>
+      <group>
+        <Flex dir="column" position={[0, pixelWidth > 1000 ? 0.1 : 0.2, 0]}>
           <Box>
-            <Text {...titleProps}>{content.title}</Text>
+            <Text {...titleProps} fontSize={titleSize}>{content.title}</Text>
           </Box>
-          <Box marginTop={-0.05}>
-            <Text {...descriptionProps} maxWidth={1.5} textAlign="center">{content.description}</Text>
+          <Box marginTop={pixelWidth > 1000 ? -0.05 : 0.02}>
+            <Text {...descriptionProps} fontSize={descriptionSize} maxWidth={pixelWidth > 1000 ? width * 0.5 : width * 0.75} textAlign="center">{content.description}</Text>
           </Box>
         </Flex>
         <Flex
           dir="row"
-          position={[0.1, -0.3, 0]}
-          size={[1.1, 1.5, 0]}
+          position={[0.01, pixelWidth > 1000 ? -0.25 : -0.1, 0]}
+          size={[width / 2, width / 2, 0]}
           flexWrap="wrap"
         >
-          {content.tools && content.tools.map(tool => (
-            <Box key={tool} marginRight={0.1} marginTop={0.1} centerAnchor>
-              <Text outlineOpacity={0} {...descriptionProps}>{tool}</Text>
+          {content.slug === 'skills' && tools.filter(tool => tool.data.isFilter).map(tool => (
+            <Box key={tool.id} marginRight={0.1} marginTop={0.1} centerAnchor>
+              <Text outlineOpacity={0} {...descriptionProps} fontSize={descriptionSize}>{tool.data.title}</Text>
             </Box>
           ))}
-          {content.slug === 'family' && <Wambui />}
         </Flex>
+        {content.slug === 'family' && <Wambui />}
       </group>
     </group>
   )

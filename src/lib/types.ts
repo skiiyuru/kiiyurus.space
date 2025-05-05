@@ -1,8 +1,9 @@
-type AboutSectionType = 'skills' | 'family'
+import type { CollectionEntry, InferEntrySchema } from 'astro:content'
 
-export interface AboutSection {
-  slug: AboutSectionType
-  title: string
-  description: string
-  tools?: string[]
+export type AboutSection = InferEntrySchema<'about_sections'>
+export type Tools = CollectionEntry<'tools'>[]
+
+export interface AboutSectionsProps {
+  sections: CollectionEntry<'about_sections'>[]
+  tools: Tools
 }

@@ -40,13 +40,13 @@ export const about_sections: AboutSection[] = [
   {
     slug: 'skills',
     title: 'Crafting Tools',
-    description: 'From frontend magic to backend architecture, these are the tools that power my digital craftsmanship.',
+    description: 'I design and build across the stack to create experiences that are both elegant and dependable.',
     tools: ['TypeScript', 'Python', 'Next.js', 'Astro', 'Three.js', 'Express.js', 'GraphQL', 'PostgreSQL', 'Redis', 'Docker'],
   },
   {
     slug: 'family',
     title: 'Foundation',
-    description: `Beyond screens and servers stands life\'s 
-    truest architecture—a marriage designed by faith, engineered by grace.`,
+    description: `'At the heart of everything is my wife Tabitha and the life we’re shaping together
+    —anchored in love, strengthened by faith, and devoted to Christ, our salvation.`,
   },
 ]

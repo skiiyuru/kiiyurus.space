@@ -116,14 +116,17 @@ export default function useFireworks() {
 
   const createRandomFirework = () => {
     const count = 400 + Math.floor(Math.random() * 1000)
-    const position = new THREE.Vector3(
-      (Math.random() - 0.5) * 2,
-      Math.random(),
-      (Math.random() - 0.5) * 2,
-    )
-    const size = 0.1 + Math.random() * 0.1
+    // const position = new THREE.Vector3(
+    //   (Math.random() - 0.5) * 2,
+    //   Math.random(),
+    //   (Math.random() - 0.5) * 2,
+    // )
+    const position = new THREE.Vector3(0, 0, 0)
+    // const size = 0.1 + Math.random() * 0.1
+    const size = 0.1 + 0.5 * 0.1
     const texture = textures[Math.floor(Math.random() * textures.length)]
-    const radius = 0.5 + Math.random()
+    // const radius = 0.5 + Math.random()
+    const radius = 1.4
     const color = new THREE.Color()
     color.setHSL(Math.random(), 1, 0.7)
 
