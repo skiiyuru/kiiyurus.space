@@ -3,7 +3,7 @@ export const baseData = {
   description: `A software developer turning pixels into immersive playgrounds`,
   image: {
     src: '/profile.png',
-    alt: 'Imla website',
+    alt: 'Profile picture',
   },
 }
 

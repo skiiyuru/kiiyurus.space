@@ -20,7 +20,8 @@ const segment = extractSegmentURL(Astro.url.pathname)
   <a
     class:list={[
       'hover:text-cream',
-      'font-semibold lg:text-lg',
+      'lg:text-xl',
+      'font-display',
       (href === '/' && segment === '') || (href !== '/' && href.includes(segment)) ? 'text-cream' : 'text-zinc-500',
     ]}
     href={href}

@@ -23,19 +23,10 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.2.1
         version: 3.3.0
-      '@fontsource-variable/handjet':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource-variable/kode-mono':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource-variable/pixelify-sans':
+      '@fontsource/fusion-pixel-12px-monospaced-sc':
         specifier: ^5.2.5
         version: 5.2.5
       '@fontsource/ibm-plex-mono':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/press-start-2p':
         specifier: ^5.2.5
         version: 5.2.5
       '@react-three/drei':
@@ -44,6 +35,9 @@ importers:
       '@react-three/fiber':
         specifier: ^9.0.0
         version: 9.1.1(@types/react@19.0.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.172.0)
+      '@react-three/flex':
+        specifier: ^1.0.1
+        version: 1.0.1(@react-three/fiber@9.1.1(@types/react@19.0.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.172.0))(react@19.1.0)(three@0.172.0)
       '@react-three/postprocessing':
         specifier: ^3.0.4
         version: 3.0.4(@react-three/fiber@9.1.1(@types/react@19.0.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.172.0))(@types/three@0.172.0)(react@19.1.0)(three@0.172.0)
@@ -661,20 +655,11 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@fontsource-variable/handjet@5.2.5':
-    resolution: {integrity: sha512-xOBYb84/pd7xGcIl/LKHHxgNB337Kh22EQ2Sa8KTfvWFebGVpzxBV95JQ7euMRxqUMq859N+BgQpk+1UTuMz2g==}
-
-  '@fontsource-variable/kode-mono@5.2.5':
-    resolution: {integrity: sha512-gO4hWWwU/xkjyFqAmfmyJwjkOclsMRz4JWBIbcRaL5/qx6NDluzR7bx7RI5WZSlkBNt5J7CXI5gUcyfqapXCUg==}
-
-  '@fontsource-variable/pixelify-sans@5.2.5':
-    resolution: {integrity: sha512-g5i5pRGTajUn19hFu6jOKm+sQgHIvhhqBslwXnxtoJm9vCaKtc7uRQIlZlX65fJ+v2zzq4hH5Z2SIiz0XPdqrw==}
+  '@fontsource/fusion-pixel-12px-monospaced-sc@5.2.5':
+    resolution: {integrity: sha512-WrPLh27o8+kiHywZYB9uny7izDOpjY2nCeNKxhfXZVCz2th9iL5jG4tW9WB+4830ZHqzPYs31U/JhyFFPsyfYA==}
 
   '@fontsource/ibm-plex-mono@5.2.5':
     resolution: {integrity: sha512-G09N3GfuT9qj3Ax2FDZvKqZttzM3v+cco2l8uXamhKyXLdmlaUDH5o88/C3vtTHj2oT7yRKsvxz9F+BXbWKMYA==}
-
-  '@fontsource/press-start-2p@5.2.5':
-    resolution: {integrity: sha512-MmGLqhkv0kuoyeGgGkquEMRxJP6auc6918bKd8uTWP2beXMWLZZwCfXCqmskFLf0XYbtbzxuRXLjTnQBeTwsMQ==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1005,6 +990,9 @@ packages:
   '@radix-ui/rect@1.0.0':
     resolution: {integrity: sha512-d0O68AYy/9oeEy1DdC07bz1/ZXX+DqCskRd3i4JzLSTXwefzaepQrKjXC7aNM8lTHjFLDO0pDgaEiQ7jEk+HVg==}
 
+  '@react-pdf/yoga@2.0.4':
+    resolution: {integrity: sha512-bsU48GQ8E4LEQ38AtyQPQZ9oEATMpolGPFewgI4sBXOZBNH2miLtoBTbyB/xEOMuBcyqtvJQwSNg2czSZjrlyQ==}
+
   '@react-spring/animated@9.7.5':
     resolution: {integrity: sha512-Tqrwz7pIlsSDITzxoLS3n/v/YCUHQdOIKtOJf4yL6kYVSDTSmVK1LI1Q3M/uu2Sx4X3pIWF3xLUhlsA6SPNTNg==}
     peerDependencies:
@@ -1068,6 +1056,13 @@ packages:
         optional: true
       react-native:
         optional: true
+
+  '@react-three/flex@1.0.1':
+    resolution: {integrity: sha512-m1zcuE0BWyUP6ASX09SGYZWHkyMS9GVcP4WGXjdSdxWi228D0p8hti9nHlnv+fpZvQO8v+Qz4EXmrf302mEzXQ==}
+    peerDependencies:
+      '@react-three/fiber': '>=8.0'
+      react: ^18.0.0
+      three: '>=0.137'
 
   '@react-three/postprocessing@3.0.4':
     resolution: {integrity: sha512-e4+F5xtudDYvhxx3y0NtWXpZbwvQ0x1zdOXWTbXMK6fFLVDd4qucN90YaaStanZGS4Bd5siQm0lGL/5ogf8iDQ==}
@@ -1397,6 +1392,9 @@ packages:
 
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
+
+  '@types/yoga-layout@1.9.7':
+    resolution: {integrity: sha512-TlYNIa9XHCGYRqVrijiDVj72Sc4Yd9At0NYEaHm8Su94GwcsXRq5y1AhA8tZUVNXYRCNpGWuOWI4VQ+R58MgUw==}
 
   '@typescript-eslint/eslint-plugin@8.29.0':
     resolution: {integrity: sha512-PAIpk/U7NIS6H7TEtN45SPGLQaHNgB7wSjsQV/8+KYokAb2T/gloOA/Bee2yd4/yKVhPKe5LlaUGhAZk5zmSaQ==}
@@ -3685,6 +3683,9 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
+  react-merge-refs@1.1.0:
+    resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==}
+
   react-reconciler@0.31.0:
     resolution: {integrity: sha512-7Ob7Z+URmesIsIVRjnLoDGwBEG/tVitidU0nMsqX/eeJaLY89RISO/10ERe0MqmzuKUUB1rmY+h1itMbUHg9BQ==}
     engines: {node: '>=0.10.0'}
@@ -5332,15 +5333,9 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@fontsource-variable/handjet@5.2.5': {}
-
-  '@fontsource-variable/kode-mono@5.2.5': {}
-
-  '@fontsource-variable/pixelify-sans@5.2.5': {}
+  '@fontsource/fusion-pixel-12px-monospaced-sc@5.2.5': {}
 
   '@fontsource/ibm-plex-mono@5.2.5': {}
-
-  '@fontsource/press-start-2p@5.2.5': {}
 
   '@humanfs/core@0.19.1': {}
 
@@ -5705,6 +5700,10 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.27.0
 
+  '@react-pdf/yoga@2.0.4':
+    dependencies:
+      '@types/yoga-layout': 1.9.7
+
   '@react-spring/animated@9.7.5(react@19.1.0)':
     dependencies:
       '@react-spring/shared': 9.7.5(react@19.1.0)
@@ -5794,6 +5793,14 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - immer
+
+  '@react-three/flex@1.0.1(@react-three/fiber@9.1.1(@types/react@19.0.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.172.0))(react@19.1.0)(three@0.172.0)':
+    dependencies:
+      '@react-pdf/yoga': 2.0.4
+      '@react-three/fiber': 9.1.1(@types/react@19.0.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.172.0)
+      react: 19.1.0
+      react-merge-refs: 1.1.0
+      three: 0.172.0
 
   '@react-three/postprocessing@3.0.4(@react-three/fiber@9.1.1(@types/react@19.0.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(three@0.172.0))(@types/three@0.172.0)(react@19.1.0)(three@0.172.0)':
     dependencies:
@@ -6103,6 +6110,8 @@ snapshots:
     dependencies:
       '@types/node': 22.13.17
     optional: true
+
+  '@types/yoga-layout@1.9.7': {}
 
   '@typescript-eslint/eslint-plugin@8.29.0(@typescript-eslint/parser@8.29.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)':
     dependencies:
@@ -8858,6 +8867,8 @@ snapshots:
       react: 19.1.0
 
   react-is@16.13.1: {}
+
+  react-merge-refs@1.1.0: {}
 
   react-reconciler@0.31.0(react@19.1.0):
     dependencies:

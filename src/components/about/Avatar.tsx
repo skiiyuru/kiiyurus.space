@@ -1,7 +1,6 @@
 import { useAnimations, useGLTF, useScroll } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
-import Fireworks from './Fireworks'
 
 const url = './model/avatar-magic.glb'
 
@@ -9,6 +8,7 @@ export default function Avatar() {
   const ref = useRef(null!)
 
   const scroll = useScroll()
+  const [{ width }, { width: pixelWidth }] = useThree(state => [state.viewport, state.size])
 
   const { scene, animations } = useGLTF(url)
   const { actions } = useAnimations(animations, ref)
@@ -22,10 +22,10 @@ export default function Avatar() {
         ref={ref}
         object={scene}
         rotation-y={Math.PI * 0.19}
-        position={[-0.5, -1, 0]}
+        position={[pixelWidth > 1000 ? -0.7 : -0.25, -1, 0]}
+        scale={Math.max(0.9, width * 0.4)}
       />
 
-      {ref.current && <Fireworks />}
     </>
   )
 }

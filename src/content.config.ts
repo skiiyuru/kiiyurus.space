@@ -6,6 +6,17 @@ const tools = defineCollection({
   schema: z.object({
     title: z.string(),
     icon: z.string(),
+    isFilter: z.boolean(),
+  }),
+})
+
+const about_sections = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.yaml', base: './src/content/about' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    slug: z.string(),
+    order: z.number(),
   }),
 })
 
@@ -42,4 +53,5 @@ export const collections = {
   tools,
   projects,
   posts,
+  about_sections,
 }

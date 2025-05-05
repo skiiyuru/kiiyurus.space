@@ -1,11 +1,16 @@
 ---
 import Experience from '@/components/about/Experience'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+
+const sections = await getCollection('about_sections')
+sections.sort((a, b) => a.data.order - b.data.order)
+const tools = await getCollection('tools')
 ---
 
 <BaseLayout
-  title="Kiiyuru's Projects"
-  description="Here are some recent projects I've done"
+  title="About Kiiyuru"
+  description="Details about his career and family"
 >
-  <Experience client:load />
+  <Experience client:load sections={sections} tools={tools} />
 </BaseLayout>
