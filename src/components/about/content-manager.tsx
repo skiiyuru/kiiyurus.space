@@ -6,6 +6,7 @@ import Content from './content'
 
 export default function ContentManager() {
   const { height: h } = useThree(state => state.viewport)
+  // Position content ~1/3 from the top of the viewport for optimal viewing
   const offset = h * 0.34
 
   const { sections, tools } = use(AboutContext)

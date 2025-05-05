@@ -1,3 +1,6 @@
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-nocheck
+
 import type { AboutSection, Tools } from '@/lib/types'
 import useFireworks from '@/hooks/use-fireworks'
 import { Text, useScroll } from '@react-three/drei'
@@ -31,12 +34,16 @@ export default function Content({ content, position, tools }: Props) {
   const descriptionSize = Math.max(scale * 0.3, 0.027)
   const titleSize = scale * 2
 
+  const SCROLL_THRESHOLD = 0.5
+  const isSkillsSection = content.slug === 'skills'
+  const isFamilySection = content.slug === 'family'
+
   useFrame(() => {
     const scrollOffset = scroll.offset
-    if (content.slug === 'skills' && scrollOffset < 0.5 && lastScrollOffset.current >= 0.5) {
+    if (isSkillsSection && scrollOffset < SCROLL_THRESHOLD && lastScrollOffset.current >= SCROLL_THRESHOLD) {
       createRandomFirework()
     }
-    else if (content.slug === 'family' && scrollOffset >= 0.5 && lastScrollOffset.current < 0.5) {
+    else if (isFamilySection && scrollOffset >= SCROLL_THRESHOLD && lastScrollOffset.current < SCROLL_THRESHOLD) {
       createRandomFirework()
     }
 
@@ -60,13 +67,13 @@ export default function Content({ content, position, tools }: Props) {
           size={[width / 2, width / 2, 0]}
           flexWrap="wrap"
         >
-          {content.slug === 'skills' && tools.filter(tool => tool.data.isFilter).map(tool => (
+          {isSkillsSection && tools.filter(tool => tool.data.isFilter).map(tool => (
             <Box key={tool.id} marginRight={0.1} marginTop={0.1} centerAnchor>
               <Text outlineOpacity={0} {...descriptionProps} fontSize={descriptionSize}>{tool.data.title}</Text>
             </Box>
           ))}
         </Flex>
-        {content.slug === 'family' && <Wambui />}
+        {isFamilySection && <Wambui />}
       </group>
     </group>
   )

@@ -8,17 +8,16 @@ export default function Scene() {
     <>
       {/* <Perf /> */}
 
-      <Suspense fallback={null}>
-        <ScrollControls
-          damping={0.2}
-          maxSpeed={0.5}
-          // distance={4}
-          pages={2}
-        >
+      <ScrollControls
+        damping={0.2}
+        maxSpeed={0.5}
+        pages={2}
+      >
+        <Suspense fallback={null}>
           <Avatar />
           <ContentManager />
-        </ScrollControls>
-      </Suspense>
+        </Suspense>
+      </ScrollControls>
 
       <Environment
         preset="studio"
