@@ -5,9 +5,11 @@ import type { AboutSection, Tools } from '@/lib/types'
 import useFireworks from '@/hooks/use-fireworks'
 import { Text, useScroll } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
-import { Box, Flex } from '@react-three/flex'
+import * as FlexModule from '@react-three/flex'
 import { useRef } from 'react'
 import Wambui from './wambui'
+
+const { Flex, Box } = FlexModule
 
 interface Props {
   content: AboutSection
