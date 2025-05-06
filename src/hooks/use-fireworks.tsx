@@ -60,7 +60,7 @@ export default function useFireworks() {
       vertex_positions[i3 + 1] = position.y
       vertex_positions[i3 + 2] = position.z
 
-      vertex_sizes[i] = Math.random()
+      vertex_sizes[i] = Math.random() + 0.2 // made them slightly larger
       time_multipliers[i] = 1 + Math.random()
     }
 
