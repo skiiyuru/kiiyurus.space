@@ -31,5 +31,5 @@ export const socialData = [
 ]
 
 export const RESUME_LINK
-  = 'https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uzuuIBn9N28rmSJ5BEuAkwPpiOjMXavQlyT9Z'
+  = 'https://rzei8mczw5.ufs.sh/f/v9xa1lyXWM8uyWwBS0jQrmAkh4XKnWfjiZ6pVlN9G1DxCLbq'
 export const EMAIL = 'steveknganga@gmail.com'
